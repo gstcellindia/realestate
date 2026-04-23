@@ -1,0 +1,2640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circular - GST Cell</title>
+<meta name="description" content="Access all GST Circulars and Instructions issued by the Kerala Commissioner of State Tax and CBIC. Find State Circulars, CBIC Circulars, and Instructions in one place.">
+	
+ <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+
+ <!----------------------Link for social media buttons----------------------->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+ <!----------------------Link for social media buttons end------------------->
+
+	<!----------------------Analytics----------------------->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1PC9X09HE8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1PC9X09HE8');
+</script>
+<!----------------------Analytics----------------------->
+	
+ <style>
+
+        .hidden {
+            display: none;
+        }
+
+html{
+font-size: 10px;
+background-color: rgb(255, 255, 255);
+
+}
+
+
+.highlighted {
+			 background-color: rgb(255, 249, 75);
+}
+
+table {
+    width: 94%;
+    border-collapse: collapse;
+    margin-left: 2%;
+    font-size: 13pt;
+	line-height: 1.3;
+vertical-align: top;
+font-family: 'Times New Roman', Times, serif, meera;
+}
+
+th, td {
+    border: 1px solid #a1e4ff;
+    padding: 5px;
+    text-align: left;
+    vertical-align: top;
+
+}
+
+th {
+    background-color: #c9fbff;
+}
+
+/* ===== UNIFIED FILTER BAR ===== */
+#filtersBar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 2% 0 2%;
+    margin-bottom: 10px;
+}
+
+.filterControl {
+    height: 38px;
+    padding: 0 10px;
+    font-size: 13pt;
+    font-family: inherit;
+    color: #003344;
+    background: linear-gradient(to right, #9be8ff, #e1f5ff);
+    border: 2px solid deepskyblue;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+    cursor: pointer;
+    min-width: 160px;
+    box-sizing: border-box;
+}
+.filterControl:hover,
+.filterControl:focus {
+    border-color: #0099cc;
+    box-shadow: 2px 2px 8px rgba(0,120,180,0.35);
+}
+.filterControl--select {
+    appearance: auto;
+    -webkit-appearance: auto;
+    max-width: 8cm;
+}
+.filterControl--search {
+    cursor: text;
+    font-style: italic;
+    flex: 1 1 200px;
+    min-width: 180px;
+    max-width: 100%;              /* fills wrapper; wrapper now controls max-width */
+    width: 100%;
+    padding-left: 34px;
+    padding-right: 30px;          /* room for the X clear button */
+    background: #ffffff;
+    border: 2px solid deepskyblue;
+    color: #003344;
+}
+.filterControl--search::placeholder { color: #7ac8e0; }
+.filterControl--search:focus::placeholder { color: #cce8f4; }
+.filterControl--search:hover { border-color: #0099cc; }
+.filterControl--search:focus {
+    border-color: #0099cc;
+    box-shadow: 0 0 0 3px rgba(0,153,204,0.15);
+}
+
+#crossSheetWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 200px;
+    min-width: 180px;
+    max-width: 8cm;               /* keeps X clear button inside the input boundary */
+}
+#searchIcon {
+    position: absolute;
+    left: 11px;
+    width: 15px;
+    height: 15px;
+    pointer-events: none;
+    color: #0099cc;
+    z-index: 1;
+    flex-shrink: 0;
+}
+#crossSheetNotice {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    font-size: 11pt;
+    color: #c0392b;
+    font-style: italic;
+    white-space: nowrap;
+    z-index: 998;
+}
+#crossSheetDropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 999;
+    background: #fff;
+    border: 2px solid deepskyblue;
+    border-radius: 8px;
+    box-shadow: 2px 4px 12px rgba(0,0,0,0.25);
+    min-width: 340px;
+    max-width: 520px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+#crossSheetDropdown .cs-header {
+    background: linear-gradient(to right, #9be8ff, #e1f5ff);
+    padding: 6px 12px; font-size: 10pt; font-weight: bold; color: #005f7a;
+    border-bottom: 1px solid #a1e4ff; border-radius: 6px 6px 0 0;
+    position: sticky; top: 0;
+}
+#crossSheetDropdown .cs-item { padding: 8px 12px; font-size: 11pt; cursor: pointer; border-bottom: 1px solid #e8f7ff; line-height: 1.4; }
+#crossSheetDropdown .cs-item:hover { background-color: #d0f4ff; }
+#crossSheetDropdown .cs-item .cs-sheet-name { font-size: 9pt; color: #0077B5; font-weight: bold; display: block; margin-bottom: 2px; }
+#crossSheetDropdown .cs-item .cs-match-text { color: #333; }
+#crossSheetDropdown .cs-searching { padding: 12px; font-style: italic; color: #888; text-align: center; font-size: 11pt; }
+#crossSheetDropdown .cs-no-result { padding: 12px; color: #c0392b; text-align: center; font-size: 11pt; }
+.amendment-button{
+    background: linear-gradient(to right, #9be8ff, #e1ffea);
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    font-size: 11pt;
+    border-radius: 10px;
+}
+
+.amendment-button:hover{
+    background: linear-gradient(to right, #59d8ff, #e1ffea);
+    box-shadow: 2px 2px 6px 2px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+.labelclass{
+    font-size: 11pt;
+}
+
+
+/* ===== SPINNER LOADER ===== */
+.Loadingstyle {
+    position: fixed; inset: 0;
+    background: rgba(220, 245, 255, 0.55);
+    backdrop-filter: blur(3px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    z-index: 1000;
+}
+.loader-spinner {
+    width: 62px; height: 62px;
+    border-radius: 50%;
+    border: 7px solid #b8eeff;
+    border-top-color: #0099cc;
+    border-right-color: #00ccee;
+    animation: spin 0.8s linear infinite;
+    box-shadow: 0 0 18px rgba(0,153,204,0.25);
+    margin-bottom: 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loader-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px; font-weight: bold;
+    color: #005f7a;
+    letter-spacing: 0.04em;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.45; } }
+
+
+.pagination {
+    display: flex;
+    justify-content: flex-end; /* Align elements to the right */
+    margin: 10px 4% 10px 0px;
+    text-align: right;
+}
+
+.pagination label,
+.pagination select,
+.pagination span,
+.pagination button {
+    margin-left: 0px; /* Add some spacing between elements */
+    margin-right: 5px; /* Add spacing to keep things clean */
+    padding: 5px;
+    display: inline-block;
+}
+
+.pagination select {
+    cursor: pointer;
+}
+
+.pagination button{
+    background-color: #c4c4c4;
+    min-width: 25px;
+}
+.pagination button:disabled {
+    background-color: #d6d6d6;
+    cursor: default;
+}
+
+.blue-link {
+    color: blue;
+    text-decoration: none;
+}
+
+.blue-link:hover {
+    text-decoration: underline;
+}
+
+.highlight {
+    background-color: yellow;
+}
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    background: linear-gradient(to right, #e6f9ff, #e1f5ff);
+    border: 2px solid #333333;
+    box-shadow: 0px 4px 8px rgba(19, 19, 19, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    overflow: auto;
+    max-height: 90%;
+    text-align: justify;
+
+    user-select: text; /* Enable text selection */
+}
+
+.popup-header {
+    background: repeating-linear-gradient(
+  180deg,
+  #93e6ff,
+  #8ae4ff 2px,
+  #91edff 3px,
+  #a8e2ff 8px
+);
+    color: red;
+    padding: 3px 10px 3px 10px;
+    cursor: grab;
+    font-weight: bold;
+    border: #4bd4fd solid 2px;
+    font-size: 16pt;
+    text-align: center;
+    align-items: center;
+    margin: -40px -20px 10px -20px;
+    position: sticky; /* Keeps the header fixed */
+    top: -21px; /* Sticks to the top within the pop-up */
+    z-index: 1; /* Ensures it's above the content */
+}
+
+
+
+.popup-content {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14pt;
+    line-height: 1.6;
+    text-align: justify;
+    margin-top: 2rem;
+    overflow-y: auto; /* Enables vertical scrolling */
+}
+
+.popup-table {
+    width: 98%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.5;
+}
+
+.popup-table th, .popup-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: justify;
+}
+
+.popup-image {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+.popup-close-symbol {
+    position: absolute;
+    top: 7px;
+    right: 9px;
+    font-size: 15px;
+    color: white;
+    background-color: red;
+    padding: 0px 4px 0px 4px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above everything in the pop-up */
+}
+
+.popup-close-symbol:hover {
+    color: red;
+    border: red solid 1px;
+    background-color: white;
+}
+button {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+
+
+
+/*******************************Tooltil (end) ***********************/  
+					.heading{
+					
+						background-color: rgb(255, 255, 255);
+					margin-top:5rem;
+					font-size: 2.5rem;
+					font-family:'Times New Roman', serif;
+					color: #FFFFFF;
+					padding: 15px 0px 10px 10px;
+					text-align: center;
+					
+					}
+					
+					
+					.blank{
+					
+					background-color: rgb(255, 255, 255);
+					margin:5px 0px 0px 0px;
+					color: #080808;
+					padding: 5px 10px;
+					text-align: justify;
+					
+					
+					}
+		
+			
+				
+					tr:nth-child(even){background-color: #f5fbfd}
+     tr:nth-child(odd){background-color: #ffffff}
+		
+					tr:hover{
+						background-color: rgb(222, 255, 255);
+					}
+					input#search {
+			background-size:contain;
+			background-repeat: no-repeat;
+			/* Extra Styling */
+			padding: 0px 5px 0px 13px;
+			transition:0.6s;
+			font-style: italic;
+   
+		}
+  
+		input#search:focus::placeholder {
+			color:rgb(232, 232, 232);
+		}
+  input#search:hover::placeholder  {
+    color:rgb(208, 208, 208);
+		}
+		.grid2{
+				margin: 10px 0px 10px 50px;
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				grid-gap: 2rem;
+				align-items: center;
+			 }
+			 
+				.grid2 > div {
+				border: none;
+				border-radius: 20px;
+				width: 500px;
+				height: 5rem;
+				}
+
+		a{
+		
+		text-decoration: none;
+	}
+
+.headimage {
+  background-image: url('https://i.postimg.cc/gkxfpYbx/head-image.jpg');
+  background-repeat: no-repeat;
+  background-attachment:local;
+  background-size: cover;
+  background-position: 100% 100%;
+  height:25rem;
+  margin-left: 0%;
+  margin-right: 0%;
+  display: flex;
+  align-items: center;
+}
+.headimage-content {
+  padding: 0 5%;
+  max-width: 800px;
+}
+                  /*-----END------Image for other page*/
+
+.sitename{
+  font-size: 60px; 
+  font-family: 'Times New Roman', Times, serif;
+  color:white;
+  padding: 0 0 10px 0;
+  font-weight: bold;
+  text-shadow: 10px 0px 10px #000000; 
+}
+
+.SRO{
+  margin-left: 0;
+  font-size: 17px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #ffffff;
+  font-style: italic;
+  text-shadow: 1px 1px 4px #000000;
+}
+.SRO:hover{
+  box-shadow: 12px 6px 12px 6px rgba(0,0,0,0.3);
+}
+.head-subtitle { font-size: 17px; }
+
+
+
+/*-------------------------------------Social Media Start-------------------------------------*/
+.panel {
+          position: fixed;
+          top: 67%;
+          right: 0;
+          transform: translateY(-50%);
+          background-color: #a1a1a162;
+          padding: 10px;
+          border-radius: 8px 0 0 8px;
+          box-shadow: -2px 2px 5px rgba(0,0,0,0.5);
+          transition: right 0.3s ease-in-out;
+          }
+
+          .panel ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          }
+
+          .panel ul li {
+          margin: 10px 0;
+          }
+
+          .panel a {
+          text-decoration: none;
+          color: #fff;
+          font-size: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+          }
+
+          .panel a:hover {
+          text-decoration: none;
+          color: #ffff00;
+          font-size: 24px;
+          }
+          .panel a.facebook { background-color: #4267B2; }
+          .panel a.whatsapp { background-color: #25D366; }
+          .panel a.gmail { background-color: #D93025; }
+          .panel a.instagram { background-color: #E4405F; }
+          .panel a.linkedin { background-color: #0077B5; }
+          .panel a.x { background-color: #000; }
+          .Sharesocial{font-weight: bold;
+          font-size: 10pt;
+          color:rgb(21, 97, 133);
+          }
+          #arrow {
+          position: fixed;
+          top: 66%;
+          right: 47px; /* Default position */
+          transform: translateY(-50%);
+          cursor: pointer;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-radius: 2px;
+          border-width: 13px 0 13px 8px; /* Leftward triangle */
+          border-color: transparent transparent transparent #616161; /* Triangle color */
+          transition: right 0.3s ease-in-out, border-width 0.3s ease-in-out, border-color 0.3s ease-in-out;
+          }
+
+          #arrow.collapsed {
+          border-width: 15px 10px 15px 0; /* Rightward triangle */
+          border-color: transparent #444 transparent transparent; /* Triangle color */
+          right: 0px; /* Adjust position */
+          }
+
+
+          .collapsed {
+          right: -150px; /* Hide panel */
+          }
+          .hide-social{
+          display:none;
+          }
+
+@media (max-width: 800px) {
+          .panel {
+          position: static;
+          width: 100%;
+          border-radius: 0;
+          box-shadow: none;
+          padding: 10px 20px 0px 20px;
+          margin-top: 5rem;
+          background-color: #ffffff;
+          }
+          .Sharesocial{font-weight: bold;
+          display:none;
+          }
+          .panel ul {
+          display: flex;
+          justify-content: center;
+          }
+
+          .panel ul li {
+          margin: 0 10px;
+          }
+
+          #arrow {
+          display: none;
+          }
+          footer {
+          margin-top: 0px; /* Smaller spacing above the footer */}
+          .hide-social{
+          display:block;
+          }
+          .labelclass {
+            display:none;
+          }
+          .amendment-button{
+    font-size: 11px;
+    border-radius: 5px;
+    padding:4px;
+}
+table {
+    width: 98%;
+    margin-left: 1%;
+    font-size: 10px;
+}
+.popup {
+    padding: 5px 5px 8rem 5px;
+}
+.popup-content{
+    font-size: 11px;
+}
+.popup-header {
+    padding: 3px 10px 3px 10px;
+    font-size: 16pt;
+    margin: -5px -5px 5px -5px;
+}
+.popup-close-symbol {
+    top: 7px;
+    font-size: 14px;
+    color: white;
+    background-color: red;
+    padding: 0px 4px 0px 4px;}
+/* Filter bar mobile overrides */
+#filtersBar { flex-direction: column; gap: 6px; padding: 8px 2% 0 2%; }
+.filterControl, #crossSheetWrapper, .filterControl--search { width: 100% !important; min-width: 0 !important; max-width: none !important; flex: 1 1 auto; box-sizing: border-box; font-size: 12pt; }
+.filterControl--select { max-width: none !important; }
+#crossSheetDropdown { min-width: 0; width: 100%; }
+/* Headimage mobile */
+.headimage { height: 16rem; }
+.headimage-content { padding: 0 4%; }
+.sitename { font-size: 20px; padding: 0 0 6px 0; }
+.SRO { font-size: 10px; }
+}
+/*-------------------------------------Social Media End-------------------------------------*/
+
+
+
+/*-------------------------------------NAV BAR STYLE START------------------------------------*/
+*{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+.see-more, .loading-message {
+        cursor: pointer;
+        color: rgb(236, 255, 116);
+        font-style: italic;
+        text-decoration: underline;
+        font-size: 13pt;
+        margin-left: 10%;
+        text-decoration: none;
+        }/* nav bar change*/
+        .wrapper .nav-links >li:hover .menu-under{
+        background:blue;
+        border:0px;
+        text-decoration: underline;
+        }/* nav bar change*/
+
+
+.Act-rule-left{
+ margin-left: -200px;
+}
+nav{
+ position: relative;
+ width: 100%;
+ margin-top: -4rem;
+ background: #242526;
+ margin-bottom:1rem;
+}
+nav .wrapper{
+ position: relative;
+ max-width: 1300px;
+ padding: 4px 30px 0px 30px;
+ height: 46px;
+ line-height: 45px;
+ margin: auto;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+}
+.wrapper .logo{
+ color: #44ff00;
+ font-size: 16px;
+ font-weight:bold;
+ text-decoration: none;
+}
+.wrapper .logo {
+ margin-top: -5px;
+}
+.wrapper .nav-links{
+ display: inline-flex;
+}
+.nav-links li{
+ list-style: none;
+}
+.nav-links li a{
+ color: #f2f2f2;
+ text-decoration: none;
+ font-size: 16px;
+ padding: 9px 10px;
+ border-radius: 5px;
+ transition: all 0.3s ease;
+}
+.nav-butt-on{
+ background: #ff0101;
+ border: 3px solid #ff0101;
+ font-size: 16px;
+ color:white; 
+ border-radius: 25PX; 
+ margin-left: 16px;
+ padding: 07px 10px 7px 10px;
+}
+.nav-butt-on:hover{
+ background: #242526;
+}
+.nav-links li a:hover, .binu-row .mega-links li a:hover{
+ COLOR: #ff0101;
+ border:.01px solid white;
+}
+.binu-row .mega-links1{
+ margin-left: -20px;
+}
+
+
+.binu-row .mega-links1 li a:hover{
+ COLOR: #d9d9d9;
+ border:.01px solid white;
+}
+
+
+.nav-links li header a:hover {
+ color: #ffffff;
+}
+.wrapper .nav-links >li:hover .menu-red{
+ background:#ff0101;
+ border:0px;
+}
+.wrapper .nav-links >li:hover .nav-butt-on{
+ background:#242526;
+}
+.nav-links .mobile-item{
+ display: none;
+}
+.nav-links .drop-menu, .drop-menu {
+ position: absolute;
+ border-top: 3px solid #ff0101;
+ background: #242526;
+ width: 155px;
+ line-height: 30px;
+ top: 85px;
+ opacity: 0;
+ visibility: hidden;
+ box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+.drop-menu{
+	z-index: 100;
+}
+.nav-links li:hover .drop-menu,
+.nav-links li:hover .mega-box{
+ transition: all 300ms ease;
+ transition-delay: 250ms;
+ top: 40px;
+ opacity: 1;
+ visibility: visible;
+}
+.drop-menu li a{
+ width: 100%;
+ display: block;
+ padding: 0 0 0 16px;
+ border-radius: 0px;
+}
+.mega-box{
+ position: absolute;
+ left: 0;
+ width: 100%;
+ padding: 0px 30px;
+ top: 85px;
+ opacity: 0;
+ visibility: hidden;
+ z-index: 100;
+ 
+}
+.mega-short-box{
+ width:800px; 
+ margin-left: 300px;
+ 
+}
+.mega-short-2box{
+ position:flex;
+ width:300px; 
+ margin-left: 570px;
+}
+.mega-short-3box{
+ width:300px; 
+ margin-left: 715px;
+}
+.mega-box .content{
+ border-top: 3px solid #eb3007;
+ background: #242526;
+ padding: 0px 20px 10px 20px;
+ display: flex;
+ width: 100%;
+ justify-content: space-between;
+ box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+.mega-box .content .binu-row{
+ width: calc(25% - 30px);
+ line-height: 30px;
+}
+.content .binu-row img{
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+}
+.content .binu-row header{
+ margin-top: 10px;
+ color: #ff0000;
+ font-size: 16px;
+}
+.content .binu-row header > a{
+ color: #ff0000;
+ font-size: 16px;
+}
+.content .binu-row .mega-links{
+ margin-left: -20px;
+ border-left: 2px solid rgba(255,255,255,0.09);
+}
+.binu-row .mega-links li{
+ padding: 0 20px;
+}
+.binu-row .mega-links li a{
+ padding: 0px;
+ padding: 0 20px;
+ color: #d9d9d9;
+ font-size: 16px;
+ display: block;
+ border-bottom:.01px solid rgb(45, 45, 45);
+}
+.binu-row .mega-links1 li a{
+ padding: 0px;
+ padding: 0 20px;
+ color: #ff0101;
+ font-size: 16px;
+ display: block;
+ border-bottom:.01px solid rgb(45, 45, 45);
+}
+.wrapper .btn{
+ color: #fff;
+ font-size: 16px;
+ cursor: pointer;
+ display: none;
+}
+.wrapper .btn.close-btn{
+ position: absolute;
+ right: 60px;
+ top: 10px;
+ color: red;
+ font-weight: bold;
+}
+.drop-menu-margin{
+ margin-left: 25PX;
+ width:20;
+}
+nav input{
+ display: none;
+}
+.body-text{
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ width: 100%;
+ text-align: center;
+ padding: 0 30px;
+}
+.wrapper .btn{
+ color: #fff;
+ font-size: 16px;
+ cursor: pointer;
+ display: none;
+}
+/*-------------------------------------NAV BAR STYLE ENDS-------------------------------------*/
+/*--------------------------tab start----------------------------*/
+html{
+	background-color: rgb(236, 241, 255);
+}
+
+
+
+.pcss3t > input {
+	display:none;
+}
+.pcss3t > label {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	transition: all .25s;
+	
+}
+.pcss3t > input:checked + label {
+	cursor: default;
+}
+.fusion1, .fusion2, .fusion3{
+	display:none;
+}
+.fusion4 { display: block; }
+
+/*--------------------------tab end----------------------------*/
+
+
+
+
+/*-----------------------------------------media @1500 starts-----------------------------------*/
+@media (max-width:1500px){
+
+
+.mega-box .content .binu-row{
+  margin-bottom: 0px;
+  border-top: 0px solid rgba(255,255,255,0.08);
+
+  
+ }
+ .-ninja{
+margin-left:70%;
+}
+
+}
+/*-----------------------------------------media @1500 end--------------------------------------*/
+/*----------------------------------------Youtube video style @1290 start-----------------------*/
+@media screen and (max-width: 1290px) {
+
+.mega-short-2box{
+width:300px; 
+margin-left: 540px;
+}
+.mega-short-3box{
+width:300px; 
+margin-left: 680px;
+}
+}
+/*----------------------------------------Youtube video style @1290 end-------------------------*/
+
+/*----------------------------------------Youtube video style @1250 start-----------------------*/
+@media screen and (max-width: 1250px) {
+.info{
+ display:none;}
+.clock{
+ display:none;}
+ .mega-short-2box{
+ width:300px; 
+ margin-left: 490px;
+}
+.mega-short-3box{
+ width:300px; 
+ margin-left: 630px;
+}
+}
+/*----------------------------------------Youtube video style @1250 end-------------------------*/
+
+/*----------------------------------------Youtube video style @1200 Start-------------------------*/
+@media screen and (max-width: 1200px) {
+
+.sitename{
+font-size: 40px; 
+}
+.SRO{
+padding: 10px 10px 3px 0;
+}
+.mega-short-box{
+ margin-left: 215px;
+}
+.mega-short-2box{
+ width:300px; 
+ margin-left: 440px;
+}
+.mega-short-3box{
+ width:300px; 
+ margin-left: 580px;
+}
+
+}
+
+/*----------------------------------------Youtube video style @1200 end-------------------------*/
+
+/*------------------------------------------media @1150 end---------------------------------------*/
+		@media screen and (max-width: 1050px) {
+			
+			
+					.grid2{
+				margin: 5px 0px 10px 15px;
+				grid-template-columns: repeat(1, 1fr);
+		
+			 }
+			 
+				.grid2 > div {
+				border: none;
+				width: 320px;
+				height: 5rem;
+				}
+		
+				.heading{
+					
+					font-size: 1.5rem;
+					
+					}
+					table, td, th {
+					 font-size: 13px;
+                     padding: 5px;
+					}
+					.SRO{
+    margin-left: 0;
+    font-size: 13px;
+  } 
+.sitename{
+font-size: 30px; 
+				
+		}
+
+  .mega-short-2box{
+ width:300px; 
+ margin-left: 400px;
+}
+.mega-short-3box{
+ width:300px; 
+ margin-left: 540px;
+}
+	
+}
+
+/*-----------------------------------------media @1100 starts-------------------------------------*/
+@media (max-width:1100px){
+ .mega-short-box{
+ margin-left: 130px;
+}
+.mega-short-2box{
+ margin-left: 350px;
+}
+.mega-short-3box{
+ margin-left: 490px;
+}
+}
+/*-----------------------------------------media @1100 ends--------------------------------------*/
+
+/*----------------------------------------media @1050 starts------------------------------------*/
+@media (max-width:1050px){
+
+.mega-short-2box{
+ margin-left: 300px;
+}
+.mega-short-3box{
+ margin-left: 440px;
+}
+}
+/*------------------------------------------media @1050 end---------------------------------------*/
+
+/*-----------------------------------------media MIN @1020 starts-----------------------------------*/
+@media screen and (min-width: 1020px) {
+        .min-width-fix{
+        min-width: 30cm;
+        }
+        .vanishnav{
+        display:none
+        }/* nav bar change*/
+
+        
+
+}
+/*-----------------------------------------media MIN @1020 ENDS-----------------------------------*/
+
+/*-------------------------------------NAV BAR STYLE @ 1020PX start-----------------------------*/
+@media screen and (max-width: 1020px) {
+.wrapper .btn{
+  display: block;
+}
+
+.wrapper .nav-links{
+ border-top: 3px solid #eb3007;
+ border-right: 3px solid #848484;
+ border-left: 3px solid #848484;
+  margin-top:4.6rem;
+  Margin-left:0px;
+  position:absolute;
+  min-height: 70vh;
+  width: 100%;
+  max-width: 340px;
+  top: 0;
+  left: -100%;
+  background: #242526;
+  display: block;
+  padding: 30px 10px;
+  line-height: 30px;
+  overflow-y: auto;
+  box-shadow: 0px 16px 16px rgba(0,0,0,0.18);
+  transition: all 0.3s ease;
+	 z-index: 100;
+ }
+ /* custom scroll bar */
+ ::-webkit-scrollbar {
+  width: 10px;
+ }
+ ::-webkit-scrollbar-track {
+  background: #242526;
+ }
+ ::-webkit-scrollbar-thumb {
+  background: #3A3B3C;
+ }
+ #menu-btn:checked ~ .nav-links{
+  left: 0%;
+ }
+ #menu-btn:checked ~ .btn.menu-btn{
+  display: none;
+ }
+ #close-btn:checked ~ .btn.menu-btn{
+  display: block;
+ }
+ .nav-links li{
+  margin: 16px 10px;
+ }
+ .nav-links li a{
+  padding: 0 20px;
+  display: block;
+  font-size: 16px;
+ }
+ .nav-links .drop-menu{
+  border-top: 0px solid #eb3007;
+  position: static;
+  opacity: 1;
+  top: 65px;
+  visibility: visible;
+  padding-left: 20px;
+  width: 100%;
+  max-height: 0px;
+  overflow: hidden;
+  box-shadow: none;
+  transition: all 0.3s ease;
+ }
+ .mega-box .content{
+
+  border-top: 0px solid #eb3007;
+ }
+ .binu-row .mega-links li a{
+ COLOR: #5dfdd8af;
+ width:280px;
+}
+ #showDrop:checked ~ .drop-menu, #showDrop1:checked ~ .drop-menu, #showDrop2:checked ~ .drop-menu,
+ #showMega1:checked ~ .mega-box, #showMega2:checked ~ .mega-box, #showMega3:checked ~ .mega-box, #showMega4:checked ~ .mega-box, #showMega5:checked ~ .mega-box{
+  max-height: 100%;
+ }
+.drop-menu-margin{
+ margin-left: 1PX;
+ WIDTH:120PX
+}
+ .nav-links .desktop-item, .nav-links{
+  display: none;
+ }
+ 
+ .nav-links .mobile-item{
+  
+  display: block;
+  color: #f2f2f2;
+  font-size: 16px;
+  padding-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+ }
+ .nav-butt-on{
+ margin-left: 10px;
+}
+ .nav-links .mobile-item:hover{
+  background: #3A3B3C;
+ }
+ .drop-menu li{
+  margin: 0;
+
+ }
+ .drop-menu li a{
+  border-radius: 5px;
+  font-size: 16px;
+  color:red;
+ }
+ .drop-menu li a:hover{
+  color:rgb(255, 255, 255);
+ }
+ .mega-box{
+  position: static;
+  top: 65px;
+  opacity: 1;
+  visibility: visible;
+  padding: 0 20px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+ }
+ .mega-box .content{
+  box-shadow: none;
+  flex-direction: column;
+  padding: 00px 20px 0 20px;
+ }
+ .mega-box .content .binu-row{
+        width: 100%;
+        margin-bottom: 0px;
+        }/* nav bar change*/
+
+
+ .mega-box .content .binu-row:nth-child(1),
+ .mega-box .content .binu-row:nth-child(2){
+  border-top: 1px;
+ }
+ .content .binu-row .mega-links{
+  border-left: 0px;
+  padding-left: 16px;
+  width:380px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-left: -65px;
+ }
+ #sub-sub-menu1:checked ~ .sub-sub-link1, #sub-sub-menu2:checked ~ .sub-sub-link2, #sub-sub-menu3:checked ~ .sub-sub-link3, #sub-sub-menu3A:checked ~ .sub-sub-link3A, #sub-sub-menu4:checked ~ .sub-sub-link4, #sub-sub-menu5:checked ~ .sub-sub-link5, #sub-sub-menu6:checked ~ .sub-sub-link6, #sub-sub-menu7:checked ~ .sub-sub-link7, #sub-sub-menu8:checked ~ .sub-sub-link8, #sub-sub-menu9:checked ~ .sub-sub-link9, #sub-sub-menu10:checked ~ .sub-sub-link10, #sub-sub-menu11:checked ~ .sub-sub-link11, #sub-sub-menu12:checked ~ .sub-sub-link12, #sub-sub-menu13:checked ~ .sub-sub-link13, #sub-sub-menu14:checked ~ .sub-sub-link14, #sub-sub-menu15:checked ~ .sub-sub-link15, #sub-sub-menu16:checked ~ .sub-sub-link16, #sub-sub-menu17:checked ~ .sub-sub-link17, #sub-sub-menu18:checked ~ .sub-sub-link18, #sub-sub-menu19:checked ~ .sub-sub-link19, #sub-sub-menu20:checked ~ .sub-sub-link20, #sub-sub-menu21:checked ~ .sub-sub-link21, #sub-sub-menu22:checked ~ .sub-sub-link22, #sub-sub-menu23:checked ~ .sub-sub-link23, #sub-sub-menu24:checked ~ .sub-sub-link24, #sub-sub-menu25:checked ~ .sub-sub-link25, #sub-sub-menu26:checked ~ .sub-sub-link26, #sub-sub-menu27:checked ~ .sub-sub-link27, #sub-sub-menu28:checked ~ .sub-sub-link28, #sub-sub-menu29:checked ~ .sub-sub-link29, #sub-sub-menu30:checked ~ .sub-sub-link30, #sub-sub-menu31:checked ~ .sub-sub-link31, #sub-sub-menu32:checked ~ .sub-sub-link32, #sub-sub-menu33:checked ~ .sub-sub-link33, #sub-sub-menu34:checked ~ .sub-sub-link34, #sub-sub-menu34:checked ~ .sub-sub-link34, #sub-sub-menu35:checked ~ .sub-sub-link35, #sub-sub-menu36:checked ~ .sub-sub-link36, #sub-sub-menu37:checked ~ .sub-sub-link37, #sub-sub-menu38:checked ~ .sub-sub-link38, #sub-sub-menu39:checked ~ .sub-sub-link39, #sub-sub-menu40:checked ~ .sub-sub-link40, #sub-sub-menu41:checked ~ .sub-sub-link41, #sub-sub-menu42:checked ~ .sub-sub-link42, #sub-sub-menu43:checked ~ .sub-sub-link43, #sub-sub-menu44:checked ~ .sub-sub-link44, #sub-sub-menu45:checked ~ .sub-sub-link45, #sub-sub-menu46:checked ~ .sub-sub-link46, #sub-sub-menu47:checked ~ .sub-sub-link47, #sub-sub-menu48:checked ~ .sub-sub-link48, #sub-sub-menu49:checked ~ .sub-sub-link49, #sub-sub-menu50:checked ~ .sub-sub-link50, #sub-sub-menu51:checked ~ .sub-sub-link51, #sub-sub-menu52:checked ~ .sub-sub-link52, #sub-sub-menu53:checked ~ .sub-sub-link53, #sub-sub-menu54:checked ~ .sub-sub-link54, #sub-sub-menu55:checked ~ .sub-sub-link55, #sub-sub-menu56:checked ~ .sub-sub-link56, #sub-sub-menu57:checked ~ .sub-sub-link57, #sub-sub-menu58:checked ~ .sub-sub-link58, #sub-sub-menu59:checked ~ .sub-sub-link59, #sub-sub-menu60:checked ~ .sub-sub-link60, #sub-sub-menu61:checked ~ .sub-sub-link61, #sub-sub-menu62:checked ~ .sub-sub-link62, #sub-sub-menu63:checked ~ .sub-sub-link63, #sub-sub-menu64:checked ~ .sub-sub-link64, #sub-sub-menu65:checked ~ .sub-sub-link65, #sub-sub-menu66:checked ~ .sub-sub-link66, #sub-sub-menu67:checked ~ .sub-sub-link67, #sub-sub-menu68:checked ~ .sub-sub-link68 {
+  max-height: 100%;
+ }
+
+
+
+ .binu-row .mega-links li{
+  margin: 0;
+  width:380px;
+ }
+ .content .binu-row header, .content .binu-row header a{
+  font-size: 16px;
+  padding-left:6px;
+  margin-left:-20px;
+ }
+ .content .binu-row header a{
+  padding-left:10px;
+ }
+ .content .binu-row header:hover{
+  background: #3A3B3C;
+ }
+
+.select-table-filter-worksinchrome{
+ display:none
+}
+ .content .binu-row .mega-links1{
+        border-left: 0px;
+        padding-left: 16px;
+        width:380px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        margin-left: -60px;
+        margin-top: -12px;
+        margin-bottom: -30px;
+        }/*nav bar change*/
+ 
+ .binu-row .mega-links1 li a{
+  border-style: hidden;
+ }
+
+.mega-short-box{
+ margin-left: 10px;
+
+}
+
+.mega-short-2box{
+ width:300px; 
+ margin-left: 10px;
+}
+.mega-short-3box{
+ width:300px; 
+ margin-left: 10px;
+}
+}
+nav input{
+ display: none;
+}
+.body-text{
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ width: 100%;
+ text-align: center;
+ padding: 0 30px;
+}
+
+
+/*-------------------------------------NAV BAR STYLE @ 1020PX end-------------------------------*/
+
+
+		@media screen and (max-width: 760px) {
+			table, td, th {
+					 font-size: 11px;
+margin-left: 1%;
+margin-right: 1%;
+padding: 2px;
+line-height: 1.5;
+					}
+					
+ .popup-table th, .popup-table td {
+    padding: 2px;
+}
+
+.Amendment-raj{
+font-size: 11pt;
+}
+
+.kininja{
+ border: 2px solid red; 
+ font-size: 11pt; 
+ background-color: rgb(255, 255, 203);
+}
+
+
+
+ .sitename{
+font-size: 20px; 
+}
+.SRO{
+font-size: 10px;
+			padding: 10px 10px 3px 25px;
+text-shadow: 1px 1px 1px #000000;
+}
+
+
+     
+		}
+		
+/*----------social media*/
+@media screen and (max-width: 635px) {
+	
+
+	.pcss3t .heading-margin{
+		margin-left: 0px;
+	}
+ .pcss3t .heading-margin2{
+		margin-top: 1%;
+	}
+ .pcss3t-theme-1 > .heading-margin, .pcss3t-theme-1 > .heading-margin2, .pcss3t-theme-1 > .heading-margin3 {
+  margin: 0 3px 5px 0;
+ font-size: 10px;
+}
+.pcss3t-theme-1 > input:checked + label {
+	font-size: 16pt;
+ padding: 0 5px;
+ 
+}
+}
+
+
+</style>
+<link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1VsL2VwLkoM_htKcGmVoOOmoWM_SzBXqH">
+<title>
+Circular - GST Cell
+</title>
+
+<script nonce="ECIwX+IFRK0=">
+ /* Firefox needs this to prevent FOUT */
+</script>
+</head>
+
+	<body>
+
+
+
+<div class="headimage">
+    <div class="headimage-content">
+        <p class="sitename fusion4">Circular</p>
+        <p class="SRO head-subtitle">Circular and Instructions issued by Commissioner of State Tax and Central Tax</p>
+    </div>
+</div>
+
+
+
+<!-------------------------------------Nav Start--------------------------------------->
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<nav>
+  <div class="wrapper">
+    <div ><a href="https://www.gstcell.com"><span class="hide-home logo">&#127968; HOME</span></a></div>
+     
+          
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+      <label for="close-btn" class="btn close-btn">&#x2715;</label>
+      
+        <li>
+        <a class="desktop-item menu-red" STYLE="margin-RIGHT: 10PX; color:white">&#9743;</a>
+        <input type="checkbox" name="main-menu" id="showDrop1">
+        <label for="showDrop1" class="mobile-item ">&#9743;</label>
+          <ul class="drop-menu" STYLE="margin-RIGHT: 20PX;">
+          <li><a href="https://www.gstcell.com/sgst-directory">DIRECTORY</a></li>
+          </ul>
+        </li>
+      
+        <li>
+          <a class="desktop-item menu-red" style="color:white">ACT & RULES &#9662;</a>
+          <input type="checkbox" name="main-menu" id="showMega1">
+          <label for="showMega1" class="mobile-item">ACT & RULES &#9662;</label>
+              <div class="mega-box">
+                  <div class="content">
+                      <div class="binu-row">
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu1">
+                          <header><label for="sub-sub-menu1">AIT & ST &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link1" id="AIT_ST">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+      
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu2">
+                          <header><label for="sub-sub-menu2">CST ACT & RULES &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link2" id="CST_ACT_RULES">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu3">
+                          <header><label for="sub-sub-menu3">ENTRY TAX ACT &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link3" id="ENTRY_TAX">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu4">
+                          <header> <label for="sub-sub-menu4">GST ACT, 2017 &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link4" id="GST_ACT">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+                      </div>
+                      <div class="binu-row">
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu5">
+                          <header> <label for="sub-sub-menu5">KGST ACT & RULES &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link5" id="KGST_ACT_RULES">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu3A">
+                          <header><label for="sub-sub-menu3A">KML ACT &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link3A" id="KML_ACT">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu6">
+                          <header> <label for="sub-sub-menu6">KVAT ACT & RULES &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link6" id="KVAT_ACT">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+      
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu7">
+                          <header> <label for="sub-sub-menu7">LUXURY TAX &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link7" id="LUXURY_TAX">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+      
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu8">
+                          <header> <label for="sub-sub-menu8">SURCHARGE ACT &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link8" id="SURCHARGE">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+                      </div>
+                      <div class="binu-row">
+                          <header><a href="https://docs.google.com/uc?id=1y6jKYVMAGUPWGdIGtEXOoL556mpn9Fsh" style="margin-left: -10px;">SOCIAL SECURITY CESS</a></header>
+      
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu9">
+                          <header> <label for="sub-sub-menu9">TAX ON LOTTERY ACT &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link9" id="LOTTERY">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu10">
+                          <header> <label for="sub-sub-menu10">KERALA FINANCE ACT &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link10" id="KERALA_FINANCE_ACT">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+                      </div>
+                      <div class="binu-row">
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu11">
+                          <header> <label for="sub-sub-menu11">CENTRAL FINANCE ACT &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link11" id="CENTRAL_FINANCE_ACT">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+      
+                          <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu12">
+                          <header> <label for="sub-sub-menu12">OTHER ACTS &#9662;</label></header>
+                                      <ul class="mega-links sub-sub-link12" id="OTHER_ACTS">
+                                          <li class="loading-message">Loading...</li>
+                                          <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                                      </ul>
+                      </div>
+                  </div>
+              </div>
+          </li>
+      <li>
+            <a  class="desktop-item menu-red" style="color:white">NOTIFICATION &#9662;</a>
+            <input type="checkbox" name="main-menu" id="showMega2">
+            <label for="showMega2" class="mobile-item">NOTIFICATION &#9662;</label>
+            <div class="mega-box mega-short-2box">
+                <div class="content">
+                    <div class="binu-row" style="width:100%; margin-left: 0%;">
+                        <ul class="mega-links1">
+                           <li> <a href="https://www.gstcell.com/notification" target="_blank">NOTIFICATIONS</a>    </li>
+                        </ul>
+                        <ul class="mega-links1">
+                          <li> <a href="https://www.gstcell.com/rod" target="_blank">R.O.D</a>    </li>
+                       </ul>
+                       <ul class="mega-links1">
+                          <li class="vanishnav"> <a href="https://www.gstcell.com/rod" target="_blank">.</a>    </li>
+                       </ul>
+                    </div>
+                </div>
+            </div>
+      </li>
+      <li> <a href="https://www.gstcell.com/circular" class="desktop-item menu-under" style="color:white">CIRCULAR</a><input type="checkbox" name="main-menu" id="showMega5">
+      <a href="https://www.gstcell.com/circular" for="showMega5" class="mobile-item">CIRCULAR</a>
+          <div class="mega-box mega-short-3box">
+            
+          </div>
+      </li>
+      <li> <a  class="desktop-item menu-red" style="color:white">GST &#9662;</a><input type="checkbox" name="main-menu" id="showMega3">
+          <label for="showMega3" class="mobile-item">GST &#9662;</label>
+            <div class="mega-box mega-short-box" style="width:900px">
+              <div class="content">
+                  <div class="binu-row" style="min-width:300px; margin-left: 10px;">
+                  <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu15">
+                  <header> <label for="sub-sub-menu15"></label></header>
+                  <!-- <ul class="mega-links sub-sub-link15">
+                        <li> <a href="https://www.gstcell.com/kerala-advance-ruling" target="_blank">KERALA</a>      </li>
+                  </ul>
+                  <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu14">
+                  <header> <label for="sub-sub-menu14">RCM &#9662;</label></header>
+                  <ul class="mega-links sub-sub-link14">
+                  <li> <a href="https://www.gstcell.com/rcm/goods" target="_blank">GOODS</a>    </li>
+                  <li> <a href="https://www.gstcell.com/rcm/service" target="_blank">SERVICES</a>    </li>
+                  </ul>-->
+                      <ul class="mega-links1"> 
+                          <li> <a href="https://www.gstcell.com/kerala-advance-ruling" target="_blank">ADVANCE RULING</a>      </li>
+                      </ul>
+                      <ul class="mega-links1"> 
+                          <li> <a href="https://www.gstcell.com/notification" target="_blank">NOTIFICATIONS</a>      </li>
+                      </ul>
+                      <ul class="mega-links1">
+                          <li> <a href="https://www.gstcell.com/rcm" target="_blank">R.C.M</a>    </li>
+                      </ul>
+                      <ul class="mega-links1">
+                          <li> <a href="https://www.gstcell.com/rod" target="_blank">R.O.D</a>    </li>
+                      </ul>
+                      <ul class="mega-links1">
+                          <li> <a href="https://www.gstcell.com/notification" target="_blank">CIRCULAR</a>  </li>
+                       </ul>
+                  </div>
+                  <div class="binu-row" style="margin-left: 10px;">
+                    <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu17" >
+                    <header> <label for="sub-sub-menu17">GST ACT & RULES &#9662;</label></header>
+                                <ul class="mega-links sub-sub-link17" id="GST_ACT_1" style="width:280px">
+                                  <li class="loading-message">Loading...</li>
+                                  <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                              </ul>
+                  </div>
+                 
+                 
+                  <div class="binu-row" style="width:250px">
+                      <input type="radio" name="sub-menu-Act" id="sub-sub-menu18">
+                      <header> <label for="sub-sub-menu18"></label></header>
+                    
+                    </div>
+      
+      
+              </div>
+            </div>
+      </li>
+        <li>
+            <a  class="desktop-item menu-red" style="color:white">FINANCE BILL & ACT &#9662;</a>
+            <input type="checkbox" name="main-menu" id="showMega4">
+            <label for="showMega4" class="mobile-item">FINANCE BILL & ACT &#9662;</label>
+            <div class="mega-box">
+            <div class="content">
+      
+                <div class="binu-row">
+                  <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu25">
+                  <header> <label for="sub-sub-menu25">BUDGET SPEECH (ENG) &#9662;</label></header>
+                              <ul class="mega-links sub-sub-link25" id="K_BS_ENG">
+                                  <li class="loading-message">Loading...</li>
+                                <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                            </ul>
+                </div>
+            <div class="binu-row">
+                <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu19">
+                <header> <label for="sub-sub-menu19">BUDGET SPEECH (MAL) &#9662;</label></header>
+                              <ul class="mega-links sub-sub-link19" id="K_BS_MAL">
+                                  <li class="loading-message">Loading...</li>
+                                <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                            </ul>
+            </div>
+      
+            <div class="binu-row">
+                <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu20">
+                <header> <label for="sub-sub-menu20">KERALA FINANCE BILL &#9662;</label></header>
+                          <ul class="mega-links sub-sub-link20" id="KF_BILL">
+                              <li class="loading-message">Loading...</li>
+                            <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                        </ul>
+            </div>
+      
+            <div class="binu-row">
+                <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu21">
+                <header> <label for="sub-sub-menu21">KERALA FINANCE ACT &#9662;</label></header>
+                            <ul class="mega-links sub-sub-link21" id="KERALA_FINANCE_ACT_1">
+                              <li class="loading-message">Loading...</li>
+                              <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                          </ul>
+              <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu22">
+              <header> <label for="sub-sub-menu22">CENTRL BUDGET SPEECH &#9662;</label></header>
+                              <ul class="mega-links sub-sub-link22" id="CENTRAL_SPEECH">
+                                  <li class="loading-message">Loading...</li>
+                                  <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                              </ul>
+            </div>
+            <div class="binu-row">
+            <input type="checkbox" name="sub-menu-Act" id="sub-sub-menu23">
+            <header> <label for="sub-sub-menu23">CENTRAL FINANCE BILL &#9662;</label></header>
+                              <ul class="mega-links sub-sub-link23" id="CF_BILL">
+                                  <li class="loading-message">Loading...</li>
+                                  <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                              </ul>
+            <input type="checkbox" name="sub-menu-Act"   id="sub-sub-menu24">
+              <header> <label for="sub-sub-menu24">CENTRAL FINANCE ACT &#9662;</label></header>
+                              <ul class="mega-links sub-sub-link24" id="CF_ACT">
+                                  <li class="loading-message">Loading...</li>
+                                  <!-- Dynamic content will be inserted here for sub-sub-link1 -->
+                              </ul>
+            </div>
+            </div>
+            </div>
+        </li>
+      <li>
+        <span class="desktop-item nav-butt-on" >&#128176; TAX RATE &#9662;</span>
+        <input type="checkbox" name="main-menu" id="showDrop2">
+        <label for="showDrop2" class="mobile-item nav-butt-on">&#128176; TAX RATE FINDER &#9662;</label>
+            <ul class="drop-menu drop-menu-margin">
+                <li><a href="https://www.gstcell.com/tax-rate-finder/gst-rate">GST</a></li>
+              <li><a href="https://www.gstcell.com/tax-rate-finder/gst-rate-of-services/ratechangequicksearch">GST rate change</a></li>
+              <li><a href="https://www.gstcell.com/tax-rate-finder/kgst-act">KGST</a></li>
+            </ul>
+      </li>
+      
+      </ul>
+      <label for="menu-btn" class="btn menu-btn">&#x2630;</label>
+      </div>
+      </nav>
+<!-------------------------------------Nav end----------------------------------------->
+
+<body>
+    <!-- Search and Filters -->
+    <div id="filtersBar">
+        <select id="functionSelect" onchange="changeFunctionOption(event)" class="filterControl filterControl--select">
+            <option style="color: black;" value="1_fe6rYyg1qfBOl5pOEvU8aY8Vj4E1cpM2qSYvjK1fvc" selected>Circular issued by Kerala</option>
+            <option style="color: black;" value="1fvLXbZu5cJ24uKcsk8gLJqN_yhuhYqzWDUeDA0c05mY">C.B.I.C. Circular</option>
+            <option style="color: black;" value="1kitIihyHBdng1aSCndyd0EHci-fprbnDj9DzIY39aIk">Instructions</option>
+        </select>
+
+        <select id="filterE" class="filterControl filterControl--select" style="text-align: center;">
+            <option value="">Select Year</option>
+        </select>
+
+        <div id="crossSheetWrapper">
+            <svg id="searchIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="searchFilter" placeholder="Search circulars..." autocomplete="off" class="filterControl filterControl--search">
+            <!-- Mask overlay: shown only when input starts with *, hides digits as bullets -->
+            <div id="searchMask" style="display:none;position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;padding-left:34px;padding-right:30px;font-size:13pt;font-family:inherit;color:#003344;line-height:38px;overflow:hidden;white-space:nowrap;box-sizing:border-box;"></div>
+            <!-- Clear button -->
+            <span id="searchClear" onclick="clearSearch()" title="Clear search" style="display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:14pt;color:#888;line-height:1;z-index:2;">&#x2715;</span>
+            <div id="crossSheetNotice">Searching other similar pages&hellip;</div>
+            <div id="crossSheetDropdown"></div>
+        </div>
+        <a id="btnCentral" href="https://docs.google.com/spreadsheets/d/1fvLXbZu5cJ24uKcsk8gLJqN_yhuhYqzWDUeDA0c05mY/edit?usp=sharing" target="_blank"
+           style="display:none; padding:7px 14px; background:linear-gradient(to right,#9be8ff,#e1ffea); border:2px solid deepskyblue; border-radius:10px; font-size:12pt; font-weight:bold; color:#005f7a; text-decoration:none; box-shadow:2px 2px 6px rgba(0,0,0,0.2); margin:10px 3px; vertical-align:middle;">
+           Central
+        </a>
+        <a id="btnState" href="https://docs.google.com/spreadsheets/d/1_fe6rYyg1qfBOl5pOEvU8aY8Vj4E1cpM2qSYvjK1fvc/edit?gid=889030374#gid=889030374" target="_blank"
+           style="display:none; padding:7px 14px; background:linear-gradient(to right,#ffe49b,#fff5e1); border:2px solid orange; border-radius:10px; font-size:12pt; font-weight:bold; color:#7a4a00; text-decoration:none; box-shadow:2px 2px 6px rgba(0,0,0,0.2); margin:10px 3px; vertical-align:middle;">
+           State
+        </a>
+        <a id="btnInstruction" href="https://docs.google.com/spreadsheets/d/1kitIihyHBdng1aSCndyd0EHci-fprbnDj9DzIY39aIk/edit?usp=sharing" target="_blank"
+           style="display:none; padding:7px 14px; background:linear-gradient(to right,#d4b3ff,#f0e6ff); border:2px solid #9b5de5; border-radius:10px; font-size:12pt; font-weight:bold; color:#4a007a; text-decoration:none; box-shadow:2px 2px 6px rgba(0,0,0,0.2); margin:10px 3px; vertical-align:middle;">
+           Instruction
+        </a>
+        <button id="btnExitSecret" onclick="exitSecretModeGlobal()"
+           style="display:none; padding:7px 12px; background:linear-gradient(to right,#ffb3b3,#ffe0e0); border:2px solid red; border-radius:10px; font-size:12pt; font-weight:bold; color:red; box-shadow:2px 2px 6px rgba(0,0,0,0.2); margin:10px 3px; vertical-align:middle; cursor:pointer;">
+           &#10005;
+        </button>
+
+        <select id="filterJ" class="filterControl filterControl--select" style="display:none">
+            <option value="">Select</option>
+        </select>
+    </div>
+
+    <!-- Data Table -->
+    <table id="dataTable">
+
+          <!-- Tax and Rate -->
+        <thead id="TaxAndRate" class="hidden" style=" background-color: lightgray;">
+            <tr>
+                <th style="width:16%; text-align: center;"><a href="https://taxinformation.cbic.gov.in/" target="_blank" style="color:blue">Central Notification</a></th>
+                <th style="width:7%">Date</th>
+                <th style="width:58%">Description</th>
+                <th style="width:19%"><a href="https://compose.kerala.gov.in/egazettelink1" target="_blank" style="color:blue">State Notifications</a></th>
+            </tr>
+        </thead>
+
+            <!-- IGST -->
+        <thead id="IgstNotification" style="background-color: lightyellow;">
+            <tr>
+                <th style="width:16%; text-align: center;">State Circular No.</th>
+                <th style="width:7%">Date</th>
+                <th style="width:58%">Description</th>
+                <th style="width:19%">Remarks</th>
+            </tr>
+        </thead>
+
+            <!-- Flood Cess -->
+          <thead id="KfcNotification" class="hidden" style="background-color: lightyellow;">
+            <tr>
+                <th style="width:16%"><a href="https://taxinformation.cbic.gov.in/" target="_blank" style="color:blue">C.B.I.C. Circular No.</a></th>
+                <th style="width:7%">Date</th>
+                <th style="width:58%">Description</th>
+                <th style="width:19%">Remarks</th>
+            </tr>
+        </thead>
+          <!-- ROD -->
+             <thead id="RodNotification" class="hidden" style=" background-color: lightyellow;">
+            <tr>
+               <th style="width:16%"><a href="https://taxinformation.cbic.gov.in/" target="_blank" style="color:blue">Instruction No.</a></th>
+                <th style="width:7%">Date</th>
+                <th style="width:58%">Description</th>
+                <th style="width:19%">Remarks</th>
+            </tr>
+        </thead>
+        <!-- Legacy -->
+             <thead id="LegacyNotification" class="hidden" style="color: #0077B5; background-color: lightyellow;">
+            <tr>
+                <th style="width:10%">Sl. No.</th>
+                <th style="width:10%">Chapter, Section, Heading, Group or SAC</th>
+                <th style="width:40%">Description of Services</th>
+                <th style="width:5%">CGST/ SGST</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        </tbody>
+    </table>
+    
+    <!-- Pagination Bottom -->
+
+    
+    <div class="pagination">
+      
+        <div id="paginationBottom"></div>
+    </div>
+
+		
+<div style="height: 10am;"></div>
+</div>
+<!-------------------------------------Social Media------------------------->
+<hr class="hide-social" style="border: 1px solid red; margin-top: 2rem;";>
+<h2 class="hide-social" style="margin-left: 5%; margin-bottom:-20px; color: rgb(0, 105, 112); font-weight: bold;">Share this page on </h2>
+<div id="social-media-panel" class="panel">
+   <ul>
+    <li class="Sharesocial">Share</li>
+    <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.gstcell.com/circular" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+      <li><a href="https://api.whatsapp.com/send?text=https://www.gstcell.com/circular" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+      <li><a href="mailto:?subject=Check%20this%20out&body=https://www.gstcell.com/circular" target="_blank" class="gmail"><i class="fas fa-envelope"></i></a></li>
+      <li><a href="https://www.instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a></li>
+      <li><a href="https://www.linkedin.com/shareArticle?url=https://www.gstcell.com/circular" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+      <li><a href="https://twitter.com/intent/tweet?url=https://www.gstcell.com/circular" target="_blank" class="x"><span>X</span></a></li>
+  </ul>
+</div>
+<div id="arrow"></div>
+<!-------------------------------------Social Media------------------------->
+
+
+
+  <!--------------------------------------------------------NAV Bar Script---------------------------------------------------------------->
+
+  <script>
+    const sheetId = '1fUwgZ4dZw6Voub9OUFUSU92xhrRthvb8cN5QFFRzWV8';
+      const apiKey1 = 'AIzaSyCCbEH-YK4gxmzO5FRXG0c7V_5RHK4hLzs';
+      const range = 'Sheet2!A:C';  // Adjust the range based on your Google Sheet
+    
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey1}`;
+  
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const rows = data.values;
+        if (rows.length > 0) {
+          const linksMap = {};
+  
+          // Group links by type
+          rows.slice(1).forEach(row => {
+            const type = row[0];
+            const linkName = row[1];
+            const linkUrl = row[2];
+            
+            if (!linksMap[type]) {
+              linksMap[type] = [];
+            }
+            
+            linksMap[type].push({ name: linkName, url: linkUrl });
+          });
+  
+          // Create HTML structure for each type and insert into corresponding ul
+          for (const type in linksMap) {
+            const ulElement = document.getElementById(type);
+            if (ulElement) {
+              let content = '';
+              const links = linksMap[type];
+              const initialLoad = Math.min(10, links.length);
+  
+              // Load initial 10 or fewer links
+              for (let i = 0; i < initialLoad; i++) {
+                content += `<li><a href="${links[i].url}" target="_blank">${links[i].name}</a></li>`;
+              }
+  
+              // If more than 10 links, add "See more" button
+              if (links.length > 10) {
+                content += `<li class="see-more" onclick="showMore('${type}')">See more</li>`;
+  
+                // Add hidden links
+                for (let i = 10; i < links.length; i++) {
+                  content += `<li class="hidden ${type}" style="display:none;"><a href="${links[i].url}" target="_blank">${links[i].name}</a></li>`;
+                }
+              }
+  
+              ulElement.innerHTML = content;
+            }
+          }
+        }
+      })
+      .catch(error => console.error('Error fetching data:', error))
+      .finally(() => {
+        // Hide the loading message after data is loaded
+        const loadingMessages = document.querySelectorAll('.loading-message');
+        loadingMessages.forEach(message => {
+          message.style.display = 'none';
+        });
+      });
+  
+    function showMore(type) {
+      const hiddenLinks = document.querySelectorAll(`.hidden.${type}`);
+      hiddenLinks.forEach(link => {
+        link.style.display = 'list-item';
+      });
+      document.querySelector(`.see-more[onclick="showMore('${type}')"]`).style.display = 'none';
+    
+    }
+  </script>
+<!--------------------------------------------------------NAV Bar Script---------------------------------------------------------------->
+<!--------------------------------------------------------GST Rate---------------------------------------------------------------->
+
+<script>
+
+const apiKey = "AIzaSyCCbEH-YK4gxmzO5FRXG0c7V_5RHK4hLzs"; // Replace with your Google API Key
+
+
+let sheetId1 = "1_fe6rYyg1qfBOl5pOEvU8aY8Vj4E1cpM2qSYvjK1fvc"; // Default sheet ID
+
+// Reference to the <select> element
+const selectSheet = document.getElementById('functionSelect');
+
+// Listen for changes in the dropdown menu
+selectSheet.addEventListener('change', async (event) => {
+    sheetId1 = event.target.value; // Update sheetId1 with the selected value
+    console.log(`Sheet ID changed to: ${sheetId1}`);
+    await fetchSheetData(); // Fetch new data based on the updated sheet ID
+});
+
+// Fetch data from Google Sheets with loading message
+async function fetchSheetData() {
+try {
+    showLoadingMessage(); // Show the loading message
+    const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId1}/values/Sheet1!A:FG?key=${apiKey}`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const data = await response.json();
+    tableData = data.values.slice(1); // Remove header row
+    originalData = [...tableData]; // Keep the original data intact
+    populateFilters();
+    applyFilters();
+} catch (error) {
+    console.error("Failed to fetch data:", error);
+} finally {
+    hideLoadingMessage(); // Hide the loading message after fetching
+}
+}
+
+
+const filterE = document.getElementById('filterE');
+const filterJ = document.getElementById('filterJ');
+const searchFilter = document.getElementById('searchFilter');
+const tableBody = document.querySelector('#dataTable tbody');
+const paginationBottom = document.getElementById('paginationBottom');
+
+let currentPage = 1;
+let rowsPerPage = 30; // Default records per page
+const maxVisiblePages = 3; // Maximum visible pages in pagination
+let tableData = [];
+let originalData = []; // Copy of the full dataset
+
+// Fetch data from Google Sheets
+// Add a loading message to the web page
+function showLoadingMessage() {
+    const loadingMessage = document.createElement('div');
+    loadingMessage.id = 'loadingMessage';
+    loadingMessage.classList.add('Loadingstyle');
+    loadingMessage.innerHTML = '<div class="loader-spinner"></div><div class="loader-text">Loading&hellip;</div>';
+    document.body.appendChild(loadingMessage);
+    document.getElementById('dataTable').style.display = 'none';
+}
+
+
+function hideLoadingMessage() {
+const loadingMessage = document.getElementById('loadingMessage');
+if (loadingMessage) {
+    document.body.removeChild(loadingMessage);
+}
+// Show the table after loading is complete
+document.getElementById('dataTable').style.display = 'table';
+}
+
+
+
+
+// Populate dropdown filters
+function populateFilters() {
+    // Populate filterE with unique values from row[5]
+    const columnEValues = [...new Set(originalData.map(row => row[5] || ''))];
+    filterE.innerHTML = '<option value="">Select Year</option>';
+    columnEValues.forEach(value => {
+        if (value) {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value;
+            filterE.appendChild(option);
+        }
+    });
+
+    // Populate filterJ with all unique values from row[145] during initial load
+    const columnJValues = [...new Set(originalData.map(row => row[145] || ''))];
+    filterJ.innerHTML = '<option value="">Select Schedule</option>';
+    columnJValues.forEach(value => {
+        if (value) {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value;
+            filterJ.appendChild(option);
+        }
+    });
+
+    filterE.addEventListener('change', () => {
+        const selectedValue = filterE.value;
+
+        let updatedColumnJValues;
+        if (selectedValue === '') {
+            // If "Select Year" is chosen, allow all unique values from row[145]
+            updatedColumnJValues = [...new Set(originalData.map(row => row[145] || ''))];
+        } else {
+            // Filter unique values from row[145] based on the selected value of filterE
+            updatedColumnJValues = [...new Set(
+                originalData
+                    .filter(row => row[5] === selectedValue) // Filter rows based on filterE's selected value
+                    .map(row => row[145] || '')
+            )];
+        }
+
+        // Update filterJ dropdown
+        filterJ.innerHTML = '<option value="">Select Schedule</option>';
+        updatedColumnJValues.forEach(value => {
+            if (value) {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = value;
+                filterJ.appendChild(option);
+            }
+        });
+    });
+}
+
+
+
+
+
+// Update the table based on pagination and filters
+let useFunction1 = true; // A flag to toggle between functions
+
+function changeFunctionOption(event) {
+    const selectedOption = event.target.value; // Get the selected value
+    
+    // Update the useFunction1 flag for table rendering logic
+    
+    useFunction1 =
+  selectedOption === "1rOoZcpg-mxwAA3z3s5SYRj6J9y_a3zn3U8mZ7knhmw8" ||
+  selectedOption === "1v7vwloebhyf-sN_UfT-y8VwPprGxvput0YNT-iIwqWQ"; // Set the flag based on the selection
+
+    // Toggling headers based on selection
+    const TaxAndRate = document.getElementById('TaxAndRate');
+    const IgstNotification = document.getElementById('IgstNotification');
+    const KfcNotification = document.getElementById('KfcNotification');
+    const RodNotification = document.getElementById('RodNotification');
+
+    if (selectedOption === "1rOoZcpg-mxwAA3z3s5SYRj6J9y_a3zn3U8mZ7knhmw8" ||
+        selectedOption === "1v7vwloebhyf-sN_UfT-y8VwPprGxvput0YNT-iIwqWQ") {
+        TaxAndRate.classList.remove('hidden');
+        IgstNotification.classList.add('hidden');
+        KfcNotification.classList.add('hidden');
+        RodNotification.classList.add('hidden');
+
+    } else if (selectedOption === "1_fe6rYyg1qfBOl5pOEvU8aY8Vj4E1cpM2qSYvjK1fvc") {
+        IgstNotification.classList.remove('hidden');
+        TaxAndRate.classList.add('hidden');
+        KfcNotification.classList.add('hidden');
+        RodNotification.classList.add('hidden');
+        
+    } else if (selectedOption === "1fvLXbZu5cJ24uKcsk8gLJqN_yhuhYqzWDUeDA0c05mY") {
+        TaxAndRate.classList.add('hidden');
+        IgstNotification.classList.add('hidden');
+        KfcNotification.classList.remove('hidden');
+        RodNotification.classList.add('hidden');
+
+    }  else if (selectedOption === "1kitIihyHBdng1aSCndyd0EHci-fprbnDj9DzIY39aIk") {
+        IgstNotification.classList.add('hidden');
+        TaxAndRate.classList.add('hidden');
+        IgstNotification.classList.add('hidden');
+        KfcNotification.classList.add('hidden');
+        RodNotification.classList.remove('hidden');
+    }
+
+    
+
+
+    // Log the change and re-render the table
+    console.log(`Switched to ${selectedOption}`);
+    updateTable(); // Re-render the table based on the selected function
+}
+
+
+function updateTable(data = tableData) {
+    if (useFunction1) {
+        updateTableFunction1(data);
+    } else {
+        updateTableFunction2(data);
+    }
+}
+
+// The updateTableFunction1 and updateTableFunction2 functions remain unchanged from before
+
+
+// Ensure a button is set up in your HTML like this:
+
+function updateTableFunction1(data = tableData) {
+    tableBody.innerHTML = '';
+    const start = (currentPage - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    const paginatedData = data.slice(start, end);
+
+  paginatedData.forEach((row, rowIndex) => {
+        // 1_fe6rYyg1qfBOl5pOEvU8aY8Vj4E1cpM2qSYvjK1fvc's logic goes here
+        const link = row[4]
+            ? `<span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[0] || '')}</span>`
+            : highlightText(row[0] || '');
+        const Errata1 = row[9] && row[9].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[7] || '')} </span><a href="${row[9]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[8] || '')}</a>`
+            : (row[7] ? `<br><br>${highlightText(row[7])}` : '');
+        const Errata2 = row[23] && row[23].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[21] || '')}</span><a href="${row[23]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[22] || '')}</a>`
+            : (row[21] ? `<br><br>${highlightText(row[21])}` : '');
+        const Errata3 = row[29] && row[29].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[27] || '')}</span><a href="${row[29]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[28] || '')}</a>`
+            : (row[27] ? `<br><br>${highlightText(row[27])}` : '');
+
+        const Description = row[6] && row[6].startsWith('http')
+            ? ` <a href="${row[6]}" target="_blank" class="blue-link" style=" text-decoration: None"> <span style="text-decoration: None; font-weight:bold">${highlightText(row[2] || '')}</span> ${highlightText(row[3] || '')}</a>`
+            : `${highlightText(row[3] || '')}`;
+        
+        
+        const Ammendment = row[14] && row[14].startsWith('http')
+            ? `<br><br><span style="text-decoration: None; color:red; font-style: italic">${highlightText(row[12] || '')}</span> <a href="${row[14]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[13] || '')}</a>`
+            : (row[12] || row[12] ? `<br><br><span style="text-decoration: None; color:red; font-style: italic">${highlightText(row[12] || '')}</span>` : '');
+            
+        const Annexure1 = row[35] && row[35].startsWith('http')
+            ? `<a href="${row[35]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[34] || '')}</a>`
+            : '';
+        const Annexure2 = row[37] && row[37].startsWith('http')
+            ? `, <a href="${row[37]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[36] || '')}</a>`
+            : '';
+        const Annexure3 = row[39] && row[39].startsWith('http')
+            ? `, <a href="${row[39]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[38] || '')}</a>`
+            : '';
+        const Annexure4 = row[41] && row[41].startsWith('http')
+            ? `, <a href="${row[41]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[40] || '')}</a>`
+            : '';
+        const Annexure5 = row[43] && row[43].startsWith('http')
+            ? `, <a href="${row[43]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[42] || '')}</a>`
+            : '';
+        const Annexure6 = row[45] && row[45].startsWith('http')
+            ? `, <a href="${row[45]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[44] || '')}</a>`
+            : '';
+
+
+        const link2 = row[16] && row[16].startsWith('http')
+            ? `<a href="${row[16]}" target="_blank" class="blue-link">${highlightText(row[15] || '')}</a>`
+            : highlightText(row[15] || '');
+        const StateErrata1 = row[19] && row[19].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[17] || '')} </span><a href="${row[19]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[18] || '')}</a>`
+            : (row[17] || row[18] ? `<br><br>${highlightText(row[17])} ${highlightText(row[18] || '')}` : '');
+        const StateErrata2 = row[26] && row[26].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[24] || '')} </span><a href="${row[26]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[25] || '')}</a>`
+            : (row[24] || row[25] ? `<br><br>${highlightText(row[24])} ${highlightText(row[25] || '')}` : '');
+        const StateErrata3 = row[32] && row[32].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[30] || '')} </span><a href="${row[26]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[25] || '')}</a>`
+            : (row[30] || row[31] ? `<br><br>${highlightText(row[30])} ${highlightText(row[31] || '')}` : '');
+           
+        
+        let tableRow = `<tr>
+            <td style="text-align: center;">${link} ${Errata1} ${Errata2} ${Errata3}</td>
+            <td style="text-align:justify">${highlightText(row[1] || '')}</td>
+            <td>${Description} ${Ammendment} ${Annexure1} ${Annexure2} ${Annexure3} ${Annexure4} ${Annexure5} ${Annexure6}</td>
+            <td>${link2} ${StateErrata1} ${StateErrata2} ${StateErrata3}</td>`;
+
+tableRow += `</tr>`;
+        tableBody.innerHTML += tableRow;
+    });
+
+    updatePagination(data);
+}
+
+
+
+
+
+
+
+function updateTableFunction2(data = tableData) {
+    tableBody.innerHTML = '';
+    const start = (currentPage - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    const paginatedData = data.slice(start, end);
+
+    const rowspanTracker = {}; // To track rowspan logic for column 5
+
+      paginatedData.forEach((row, rowIndex) => {
+        // 1_fe6rYyg1qfBOl5pOEvU8aY8Vj4E1cpM2qSYvjK1fvc's logic goes here
+        const link = row[4]
+            ? `<span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[0] || '')}</span>`
+            : highlightText(row[0] || '');
+        const Errata1 = row[9] && row[9].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[7] || '')} </span><a href="${row[9]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[8] || '')}</a>`
+            : (row[7] ? `<br><br>${highlightText(row[7])}` : '');
+        const Errata2 = row[23] && row[23].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[21] || '')}</span><a href="${row[23]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[22] || '')}</a>`
+            : (row[21] ? `<br><br>${highlightText(row[21])}` : '');
+        const Errata3 = row[29] && row[29].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[27] || '')}</span><a href="${row[29]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[28] || '')}</a>`
+            : (row[27] ? `<br><br>${highlightText(row[27])}` : '');
+
+        const Description = row[6] && row[6].startsWith('http')
+            ? ` <a href="${row[6]}" target="_blank" class="blue-link" style=" text-decoration: None"> <span style="text-decoration: None; font-weight:bold">${highlightText(row[2] || '')}</span> ${highlightText(row[3] || '')}</a>`
+            : `${highlightText(row[3] || '')}`;
+        
+        
+        const Ammendment = row[14] && row[14].startsWith('http')
+            ? `<br><br><span style="text-decoration: None; color:red; font-style: italic">${highlightText(row[12] || '')}</span> <a href="${row[14]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[13] || '')}</a>`
+            : (row[12] || row[12] ? `<br><br><span style="text-decoration: None; color:red; font-style: italic">${highlightText(row[12] || '')}</span>` : '');
+            
+        const Annexure1 = row[35] && row[35].startsWith('http')
+            ? `<a href="${row[35]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[34] || '')}</a>`
+            : '';
+        const Annexure2 = row[37] && row[37].startsWith('http')
+            ? `, <a href="${row[37]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[36] || '')}</a>`
+            : '';
+        const Annexure3 = row[39] && row[39].startsWith('http')
+            ? `, <a href="${row[39]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[38] || '')}</a>`
+            : '';
+        const Annexure4 = row[41] && row[41].startsWith('http')
+            ? `, <a href="${row[41]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[40] || '')}</a>`
+            : '';
+        const Annexure5 = row[43] && row[43].startsWith('http')
+            ? `, <a href="${row[43]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[42] || '')}</a>`
+            : '';
+        const Annexure6 = row[45] && row[45].startsWith('http')
+            ? `, <a href="${row[45]}" target="_blank" class="blue-link" style=" text-decoration: None ;font-style: italic">${highlightText(row[44] || '')}</a>`
+            : '';
+
+
+        const link2 = row[16] && row[16].startsWith('http')
+            ? `<a href="${row[16]}" target="_blank" class="blue-link">${highlightText(row[15] || '')}</a>`
+            : highlightText(row[15] || '');
+        const StateErrata1 = row[19] && row[19].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[17] || '')} </span><a href="${row[19]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[18] || '')}</a>`
+            : (row[17] || row[18] ? `<br><br>${highlightText(row[17])} ${highlightText(row[18] || '')}` : '');
+        const StateErrata2 = row[26] && row[26].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[24] || '')} </span><a href="${row[26]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[25] || '')}</a>`
+            : (row[24] || row[25] ? `<br><br>${highlightText(row[24])} ${highlightText(row[25] || '')}` : '');
+        const StateErrata3 = row[32] && row[32].startsWith('http')
+            ? `<br><br><span style="color:red; text-decoration: None;font-style: italic">${highlightText(row[30] || '')} </span><a href="${row[26]}" target="_blank" class="blue-link" style=" text-decoration: None;font-style: italic">${highlightText(row[25] || '')}</a>`
+            : (row[30] || row[31] ? `<br><br>${highlightText(row[30])} ${highlightText(row[31] || '')}` : '');
+           
+        
+        let tableRow = `<tr>
+            <td style="text-align: center;">${link} ${Errata1} ${Errata2} ${Errata3}</td>
+            <td style="text-align:justify">${highlightText(row[1] || '')}</td>
+            <td>${Description} ${Ammendment} ${Annexure1} ${Annexure2} ${Annexure3} ${Annexure4} ${Annexure5} ${Annexure6}</td>
+            <td>${link2} ${StateErrata1} ${StateErrata2} ${StateErrata3}</td>`;
+
+tableRow += `</tr>`;
+        tableBody.innerHTML += tableRow;
+    });
+
+    updatePagination(data);
+}
+
+
+
+
+
+
+// Highlight search keywords in the table
+function highlightText(text) {
+const query = searchFilter.value.trim().toLowerCase(); // Get the search query
+if (!text || !query) return text; // Return original text if there's no query or text
+
+// Create a temporary container to safely handle HTML
+const tempDiv = document.createElement('div');
+tempDiv.innerHTML = text; // Parse the input text as HTML
+
+// Function to recursively highlight text nodes
+function processNode(node) {
+    if (node.nodeType === Node.TEXT_NODE) { // Process only text nodes
+        const regex = new RegExp(`(${query})`, 'gi'); // Match the query
+        const highlightedText = node.nodeValue.replace(regex, '<span class="highlight">$1</span>');
+        const wrapper = document.createElement('span');
+        wrapper.innerHTML = highlightedText;
+        return Array.from(wrapper.childNodes); // Return processed child nodes
+    } else if (node.nodeType === Node.ELEMENT_NODE) { // Process element nodes recursively
+        const childNodes = Array.from(node.childNodes).flatMap(processNode);
+        node.innerHTML = ''; // Clear the element
+        childNodes.forEach(child => node.appendChild(child)); // Append processed nodes
+    }
+    return [node]; // Return the node unchanged if not a text node
+}
+
+const processedNodes = Array.from(tempDiv.childNodes).flatMap(processNode);
+tempDiv.innerHTML = ''; // Clear the temporary container
+processedNodes.forEach(node => tempDiv.appendChild(node)); // Rebuild with processed nodes
+
+return tempDiv.innerHTML; // Return processed HTML
+}
+
+
+
+// ==================== SECRET CODE HANDLER ====================
+(function() {
+    const sf             = document.getElementById('searchFilter');
+    const btnCentral     = document.getElementById('btnCentral');
+    const btnState       = document.getElementById('btnState');
+    const btnInstruction = document.getElementById('btnInstruction');
+    const btnExit        = document.getElementById('btnExitSecret');
+
+    // States: 'normal' | 'star' (saw *, still text mode) | 'number' (password mode, digits after *)
+    let state = 'normal';
+
+    window.exitSecretModeGlobal = function() {
+        state = 'normal';
+        sf.type = 'text';
+        sf.value = '';
+        sf.placeholder = 'Search circulars...';
+        sf.style.color = '';
+        sf.style.caretColor = '';
+        const mask = document.getElementById('searchMask');
+        if (mask) mask.style.display = 'none';
+        const clearBtn = document.getElementById('searchClear');
+        if (clearBtn) clearBtn.style.display = 'none';
+        hideButtons();
+    };
+
+    function hideButtons() {
+        btnCentral.style.display     = 'none';
+        btnState.style.display       = 'none';
+        btnInstruction.style.display = 'none';
+        btnExit.style.display        = 'none';
+    }
+
+    function revealButtons() {
+        btnCentral.style.display     = 'inline-block';
+        btnState.style.display       = 'inline-block';
+        btnInstruction.style.display = 'inline-block';
+        btnExit.style.display        = 'inline-block';
+    }
+
+    sf.addEventListener('keydown', function(e) {
+
+        // --- NORMAL state ---
+        if (state === 'normal') {
+            // If * is the first character typed, enter 'star' state
+            if (e.key === '*' && sf.value === '') {
+                // Let the * appear normally in the text box
+                state = 'star';
+            }
+            return;
+        }
+
+        // --- STAR state: user typed *, box shows '*', type = text ---
+        if (state === 'star') {
+            if (e.key === 'Backspace') {
+                // Deleting the * — back to normal
+                state = 'normal';
+                return;
+            }
+            if (/^[0-9]$/.test(e.key)) {
+                // First digit after * — switch to password mode
+                e.preventDefault();
+                state = 'number';
+                sf.type = 'password';
+                sf.value = e.key; // put the digit as first char
+                return;
+            }
+            // Any non-digit, non-backspace → treat as normal search
+            state = 'normal';
+            return;
+        }
+
+        // --- NUMBER state: password mode, collecting digits ---
+        if (state === 'number') {
+            if (e.key === 'Backspace') {
+                // If only one char left and backspace, go back to star state
+                if (sf.value.length <= 1) {
+                    e.preventDefault();
+                    state = 'star';
+                    sf.type = 'text';
+                    sf.value = '*';
+                }
+                // Otherwise let browser handle backspace normally
+                return;
+            }
+            if (e.key === '+') {
+                e.preventDefault();
+                // Trigger buttons
+                state = 'normal';
+                sf.type = 'text';
+                sf.value = '';
+                sf.placeholder = 'Search circulars...';
+                revealButtons();
+                return;
+            }
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                window.exitSecretModeGlobal();
+                return;
+            }
+            if (/^[0-9]$/.test(e.key)) {
+                // Allow digit — browser handles it
+                return;
+            }
+            // Non-digit typed → exit secret mode, treat as normal search
+            e.preventDefault();
+            window.exitSecretModeGlobal();
+            return;
+        }
+    });
+
+    // Watch for the box being cleared externally (e.g. user selects all & deletes)
+    sf.addEventListener('input', function() {
+        if (state === 'normal') {
+            // Hide buttons if user is typing a normal search
+            hideButtons();
+        }
+        if (state === 'star' && sf.value === '') {
+            state = 'normal';
+        }
+    });
+})();
+// ==================== END SECRET CODE HANDLER ====================
+
+// Filter data based on all three filters
+function applyFilters() {
+const searchQuery = searchFilter.value.trim().toLowerCase();
+const filterEValue = filterE.value;
+const filterJValue = filterJ.value;
+
+
+    tableData = originalData.filter(row => {
+        const matchesSearch = !searchQuery || row.some((cell, index) => {
+            // Exclude columns K (index 10) and L (index 11)
+           const excludedIndexes = [6, 9, 11, 14, 16, 19, 23, 26, 29, 32, 34, 36, 38, 40, 42];
+
+if (excludedIndexes.includes(index)) {
+    return false;
+
+            }
+            return cell && cell.toLowerCase().includes(searchQuery);
+        });
+
+    const matchesFilterE = !filterEValue || row[5] === filterEValue;
+    const matchesFilterJ = !filterJValue || row[145] === filterJValue;
+    return matchesSearch && matchesFilterE && matchesFilterJ;
+});
+
+currentPage = 1; // Reset to the first page
+updateTable();
+handleCrossSheetSearch(searchQuery);
+}
+
+// Update pagination buttons
+
+function updatePagination(data) {
+    const totalPages = Math.ceil(data.length / rowsPerPage);
+
+    const createPagination = (paginationDiv) => {
+        let paginationHTML = `<label class="labelclass">Show</label>
+                              <select id="recordsPerPage" onchange="updateRowsPerPage()">
+                                  <option value="30" ${rowsPerPage === 30 ? "selected" : ""}>30</option>
+                                  <option value="100" ${rowsPerPage === 100 ? "selected" : ""}>100</option>
+                                  <option value="200" ${rowsPerPage === 200 ? "selected" : ""}>200</option>
+                                  <option value="300" ${rowsPerPage === 300 ? "selected" : ""}>300</option>
+                              </select>
+                              <span class="labelclass">records</span>`;
+        paginationHTML += `<button ${currentPage === 1 ? 'disabled' : ''} onclick="navigateToPage(1)">First</button>`;
+        paginationHTML += `<button ${currentPage === 1 ? 'disabled' : ''} onclick="navigateToPage(${currentPage - 1})">Prev</button>`;
+
+        const startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+        for (let i = startPage; i <= endPage; i++) {
+            paginationHTML += `<button ${i === currentPage ? 'disabled' : ''} onclick="navigateToPage(${i})">${i}</button>`;
+        }
+
+        paginationHTML += `<button ${currentPage === totalPages ? 'disabled' : ''} onclick="navigateToPage(${currentPage + 1})">Next</button>`;
+        paginationHTML += `<button ${currentPage === totalPages ? 'disabled' : ''} onclick="navigateToPage(${totalPages})">Last</button>`;
+
+        paginationDiv.innerHTML = paginationHTML;
+
+        // Responsive behavior for hiding elements
+        const updateVisibility = () => {
+            const labelElements = document.querySelectorAll('.labelclass');
+            if (window.innerWidth < 800) {
+                labelElements.forEach(el => el.style.display = 'none');
+            } else {
+                labelElements.forEach(el => el.style.display = 'inline');
+            }
+        };
+
+        // Initial visibility adjustment
+        updateVisibility();
+        // Attach resize event listener for dynamic changes
+        window.addEventListener('resize', updateVisibility);
+    };
+
+    createPagination(paginationBottom);
+}
+
+
+
+
+// Navigate to a specific page
+function navigateToPage(page) {
+currentPage = page;
+updateTable();
+}
+
+// Update rows per page dynamically
+function updateRowsPerPage() {
+const selector = document.getElementById('recordsPerPage');
+rowsPerPage = parseInt(selector.value, 10);
+currentPage = 1;
+updateTable();
+}
+
+// Event listeners for filters and rows per page
+searchFilter.addEventListener('input', function() {
+    const raw = this.value;
+    const clearBtn = document.getElementById('searchClear');
+    if (clearBtn) clearBtn.style.display = raw.length > 0 ? 'block' : 'none';
+    applyFilters();
+});
+filterE.addEventListener('change', applyFilters);
+filterJ.addEventListener('change', applyFilters);
+
+// Initialize the table
+fetchSheetData();
+
+// ==================== CROSS-SHEET SEARCH ====================
+const ALL_SHEETS = [
+    { value: "1_fe6rYyg1qfBOl5pOEvU8aY8Vj4E1cpM2qSYvjK1fvc", label: "Circular issued by Kerala" },
+    { value: "1fvLXbZu5cJ24uKcsk8gLJqN_yhuhYqzWDUeDA0c05mY",  label: "C.B.I.C. Circular" },
+    { value: "1kitIihyHBdng1aSCndyd0EHci-fprbnDj9DzIY39aIk",  label: "Instructions" }
+];
+const CS_EXCLUDED_INDEXES = [6, 9, 11, 14, 16, 19, 23, 26, 29, 32, 34, 36, 38, 40, 42];
+const csNotice   = document.getElementById('crossSheetNotice');
+const csDropdown = document.getElementById('crossSheetDropdown');
+
+// Cache fetched sheet data to avoid repeated API calls
+const csSheetCache = {};
+let csSearchTimer = null;
+let csAbortFlag   = false;
+
+document.addEventListener('click', (e) => {
+    if (!document.getElementById('crossSheetWrapper').contains(e.target)) hideCrossSheetDropdown();
+});
+
+function hideCrossSheetDropdown() {
+    csDropdown.style.display = 'none';
+    csNotice.style.display   = 'none';
+}
+
+function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function clearSearch() {
+    const sf = document.getElementById('searchFilter');
+    sf.value = '';
+    sf.style.color = '';
+    sf.style.caretColor = '';
+    const mask = document.getElementById('searchMask');
+    if (mask) mask.style.display = 'none';
+    const clearBtn = document.getElementById('searchClear');
+    if (clearBtn) clearBtn.style.display = 'none';
+    hideCrossSheetDropdown();
+    applyFilters();
+}
+
+function handleCrossSheetSearch(searchQuery) {
+    csAbortFlag = true;
+    clearTimeout(csSearchTimer);
+    hideCrossSheetDropdown();
+    if (!searchQuery || searchQuery.length < 2) return;
+    csNotice.style.display = 'block';
+    csDropdown.style.display = 'none';
+    csSearchTimer = setTimeout(() => { csAbortFlag = false; runCrossSheetSearch(searchQuery); }, 500);
+}
+
+async function fetchCsSheetData(sheetId) {
+    if (csSheetCache[sheetId]) return csSheetCache[sheetId];
+    try {
+        const resp = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A:FG?key=${apiKey}`);
+        if (!resp.ok) return [];
+        const d = await resp.json();
+        const rows = (d.values || []).slice(1);
+        csSheetCache[sheetId] = rows;
+        return rows;
+    } catch { return []; }
+}
+
+async function runCrossSheetSearch(query) {
+    const sheetsToSearch = ALL_SHEETS.filter(s => s.value !== sheetId1);
+    csDropdown.innerHTML = `<div class="cs-header">Searching other similar pages&hellip;</div><div class="cs-searching">&#128269; Searching&hellip;</div>`;
+    csDropdown.style.display = 'block';
+    csNotice.style.display = 'none';
+
+    const allMatches = [];
+    const lowerQuery = query.toLowerCase();
+
+    for (const sheet of sheetsToSearch) {
+        if (csAbortFlag) return;
+        const rows = await fetchCsSheetData(sheet.value);
+        for (const row of rows) {
+            const matched = row.some((cell, idx) => {
+                if (CS_EXCLUDED_INDEXES.includes(idx)) return false;
+                return cell && cell.toLowerCase().includes(lowerQuery);
+            });
+            if (matched) {
+                const previewCols = [0, 1, 3].map(i => (row[i] || '').replace(/<[^>]*>/g, '').trim()).filter(Boolean);
+                const preview = previewCols.join(' | ').substring(0, 120) || '(entry)';
+                allMatches.push({ sheetId: sheet.value, sheetLabel: sheet.label, preview });
+            }
+        }
+    }
+
+    if (csAbortFlag) return;
+
+    if (allMatches.length === 0) {
+        csDropdown.innerHTML = `<div class="cs-header">Cross-page search</div><div class="cs-no-result">No matches found in any other page.</div>`;
+        csDropdown.style.display = 'block';
+        return;
+    }
+
+    const seen = {}; const limited = [];
+    for (const m of allMatches) {
+        seen[m.sheetLabel] = (seen[m.sheetLabel] || 0);
+        if (seen[m.sheetLabel] < 5 && limited.length < 30) { limited.push(m); seen[m.sheetLabel]++; }
+    }
+    const totalCount = allMatches.length;
+    let html = `<div class="cs-header">Found ${totalCount} match${totalCount !== 1 ? 'es' : ''} in other pages &mdash; click to switch &amp; load</div>`;
+    limited.forEach(m => {
+        const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const highlighted = m.preview.replace(new RegExp(`(${escaped})`, 'gi'), '<span class="highlight">$1</span>');
+        html += `<div class="cs-item" onclick="switchToSheetFromCrossSearch('${m.sheetId}', '${m.sheetLabel.replace(/'/g, "\\'")}')">
+                    <span class="cs-sheet-name">&#128196; ${m.sheetLabel}</span>
+                    <span class="cs-match-text">${highlighted}</span>
+                 </div>`;
+    });
+    if (totalCount > limited.length) {
+        html += `<div class="cs-item" style="color:#888;font-style:italic;cursor:default;">…and ${totalCount - limited.length} more. Switch to the page to see all.</div>`;
+    }
+    csDropdown.innerHTML = html;
+    csDropdown.style.display = 'block';
+}
+
+async function switchToSheetFromCrossSearch(newSheetId, sheetLabel) {
+    hideCrossSheetDropdown();
+    const selectEl = document.getElementById('functionSelect');
+    selectEl.value = newSheetId;
+    sheetId1 = newSheetId;
+    changeFunctionOption({ target: { value: newSheetId } });
+    await fetchSheetData();
+}</script>
+<!-------------------------------------------------------Social Media---------------------------------------------------------------->
+<script>
+    const panel = document.getElementById('social-media-panel');
+  const arrow = document.getElementById('arrow');
+  
+  let panelVisible = true;
+  
+  arrow.addEventListener('click', () => {
+  if (panelVisible) {
+     panel.classList.add('collapsed');
+     arrow.classList.add('collapsed');
+     panelVisible = false;
+  } else {
+     panel.classList.remove('collapsed');
+     arrow.classList.remove('collapsed');
+     panelVisible = true;
+  }
+  });
+  
+  
+  </script>
+  <!-------------------------------------------------------Social Media---------------------------------------------------------------->
+</body>
+</html>
