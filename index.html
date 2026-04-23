@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Estato — Luxury Real Estate</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Kerala Theeram — Premium Properties in God's Own Country</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Malayalam:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream:#F5F0E8; --dark:#1A1208; --gold:#C9A84C; --gold-light:#E8C97A;
-  --warm-gray:#7A7060; --white:#FDFBF7; --shadow:0 8px 40px rgba(26,18,8,0.10);
-  --radius:16px; --red:#c0392b; --green:#27ae60;
+  --cream:#EEF4EC; --dark:#0F2318; --gold:#C9A84C; --gold-light:#E8C97A;
+  --warm-gray:#4A6855; --white:#F5FAF3; --shadow:0 8px 40px rgba(15,35,24,0.12);
+  --radius:16px; --red:#c0392b; --green:#27ae60; --accent:#2E7D52;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);min-height:100vh;}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(245,240,232,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.18);}
-.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800;color:var(--dark);}
-.logo span{color:var(--gold);}
+.logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:800;color:var(--dark);}
+.logo span{color:var(--gold);font-family:'Noto Sans Malayalam',sans-serif;font-size:1.1rem;font-weight:600;margin-left:2px;}
+footer .flogo span{font-family:'Noto Sans Malayalam',sans-serif;font-size:1.2rem;font-weight:600;}
 .nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
 .nav-links a{text-decoration:none;color:var(--warm-gray);font-size:0.9rem;font-weight:500;cursor:pointer;transition:color .2s;}
 .nav-links a:hover{color:var(--gold);}
@@ -36,17 +37,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .page.active{display:block;}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 48px 80px;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(201,168,76,0.10) 0%,transparent 70%),var(--cream);position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;right:-80px;top:80px;width:480px;height:480px;border-radius:50%;border:1px solid rgba(201,168,76,0.20);}
-.hero::after{content:'';position:absolute;right:-20px;top:140px;width:340px;height:340px;border-radius:50%;background:rgba(201,168,76,0.06);}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 48px 80px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,28,16,0.85) 0%,rgba(10,28,16,0.55) 55%,rgba(10,28,16,0.20) 100%);}
+.hero-content{position:relative;z-index:1;}
 .hero-label{font-size:0.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:18px;}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:800;line-height:1.06;max-width:680px;margin-bottom:24px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,5.5rem);font-weight:800;line-height:1.06;max-width:700px;margin-bottom:24px;color:#fff;}
 .hero h1 em{color:var(--gold);font-style:italic;}
-.hero p{color:var(--warm-gray);max-width:460px;line-height:1.75;font-size:1rem;margin-bottom:40px;}
+.hero p{color:rgba(255,255,255,0.80);max-width:480px;line-height:1.75;font-size:1rem;margin-bottom:40px;}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
 .hero-stats{display:flex;gap:52px;margin-top:64px;flex-wrap:wrap;}
-.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;}
-.stat-label{font-size:0.8rem;color:var(--warm-gray);letter-spacing:0.5px;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:#fff;}
+.stat-label{font-size:0.8rem;color:rgba(255,255,255,0.60);letter-spacing:0.5px;}
 
 /* ── SEARCH ── */
 .search-wrap{padding:0 48px 70px;margin-top:-16px;position:relative;z-index:10;}
@@ -198,16 +201,105 @@ footer .flogo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:
 footer .flogo span{color:var(--gold);}
 footer p{font-size:0.85rem;}
 
-/* ── RESPONSIVE ── */
+/* ── HAMBURGER MENU ── */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--dark);border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(245,244,240,0.98);backdrop-filter:blur(12px);z-index:99;padding:20px 24px;border-bottom:1px solid rgba(201,168,76,0.2);flex-direction:column;gap:0;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{display:block;padding:14px 0;font-size:1rem;color:var(--dark);font-weight:500;border-bottom:1px solid rgba(15,35,24,0.07);cursor:pointer;}
+.mobile-menu a:last-child{border-bottom:none;}
+.mobile-menu a:hover{color:var(--gold);}
+
+/* ── ADMIN EXTRA ── */
+.admin-toolbar{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;align-items:center;justify-content:space-between;}
+.admin-toolbar h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin:0;}
+.admin-toolbar-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.atbtn{padding:9px 18px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all .2s;}
+.atbtn-green{background:rgba(39,174,96,0.15);color:#1a7a44;}
+.atbtn-green:hover{background:#27ae60;color:#fff;}
+.atbtn-red{background:rgba(192,57,43,0.12);color:var(--red);}
+.atbtn-red:hover{background:var(--red);color:#fff;}
+.atbtn-gold{background:rgba(201,168,76,0.2);color:#7a5c10;}
+.atbtn-gold:hover{background:var(--gold);color:var(--dark);}
+.search-admin{padding:9px 14px;border:1.5px solid rgba(15,35,24,0.12);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.88rem;background:var(--cream);color:var(--dark);outline:none;min-width:200px;}
+.search-admin:focus{border-color:var(--gold);}
+.admin-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-bottom:32px;}
+.acard{background:var(--white);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);}
+.acard-n{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold);}
+.acard-l{font-size:0.78rem;color:var(--warm-gray);margin-top:3px;}
+/* mobile card view for admin table */
+.prop-mobile-card{display:none;background:var(--white);border-radius:12px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow);}
+.prop-mobile-card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px;}
+.prop-mobile-card h4{font-size:1rem;font-weight:600;margin-bottom:4px;}
+.prop-mobile-card p{font-size:0.82rem;color:var(--warm-gray);margin-bottom:10px;}
+.prop-mobile-card .card-actions{display:flex;gap:8px;}
+
+/* ── FULL RESPONSIVE ── */
+@media(max-width:1024px){
+  nav{padding:14px 28px;}
+  .hero,.search-wrap,.section,.add-section{padding-left:28px;padding-right:28px;}
+  .admin-page{padding:90px 28px 60px;}
+  .pgrid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));}
+  .hero-stats{gap:36px;}
+}
 @media(max-width:768px){
+  /* NAV */
   nav{padding:14px 20px;}
   .nav-links{display:none;}
-  .hero,.search-wrap,.section,.add-section,.admin-page{padding-left:20px;padding-right:20px;}
+  .hamburger{display:flex;}
+  #nav-user{display:none !important;}
+  /* HERO */
+  .hero{padding:100px 20px 60px;}
+  .hero-label{font-size:0.68rem;letter-spacing:2px;}
+  .hero h1{font-size:2.4rem;}
+  .hero p{font-size:0.92rem;}
+  .hero-stats{gap:24px;margin-top:40px;}
+  .stat-num{font-size:1.8rem;}
+  /* SEARCH */
+  .search-wrap{padding:0 20px 50px;}
+  .search-box{flex-direction:column;gap:14px;padding:20px;}
+  .sf{min-width:unset;width:100%;}
+  .search-go{width:100%;padding:13px;}
+  /* LISTINGS */
+  .section{padding:50px 20px;}
+  .sec-header{flex-direction:column;align-items:flex-start;gap:12px;}
+  .pgrid{grid-template-columns:1fr;}
+  /* MODAL */
+  .modal{border-radius:16px;}
+  .mimg{height:220px;}
+  .mbody{padding:18px 16px;}
+  .mprice{font-size:1.5rem;}
+  .mtitle{font-size:1.2rem;}
+  .mstats{gap:14px;padding:12px 16px;}
+  .mst-v{font-size:1.1rem;}
+  .macts{flex-direction:column;}
+  .macts button{width:100%;}
+  /* ADD FORM */
+  .add-section{padding:0 20px 60px;}
+  .add-card{padding:24px 20px;}
   .fgrid{grid-template-columns:1fr;}
   .fg.full{grid-column:1;}
-  .search-box{flex-direction:column;}
-  .mbody{padding:20px;}
-  .macts button{min-width:unset;}
+  /* ADMIN */
+  .admin-page{padding:80px 16px 40px;}
+  .admin-page h2{font-size:1.5rem;}
+  .admin-toolbar{flex-direction:column;align-items:flex-start;gap:12px;}
+  .admin-card-grid{grid-template-columns:repeat(2,1fr);}
+  .admin-table-wrap{display:none;}
+  .prop-mobile-card{display:block;}
+  /* AUTH */
+  .auth-modal{padding:28px 20px;border-radius:16px;}
+  /* FOOTER */
+  footer{padding:40px 20px;}
+}
+@media(max-width:420px){
+  .hero h1{font-size:2rem;}
+  .hero-stats{gap:18px;}
+  .stat-num{font-size:1.5rem;}
+  .admin-card-grid{grid-template-columns:repeat(2,1fr);}
+  .mstats{flex-wrap:wrap;}
 }
 </style>
 </head>
@@ -215,34 +307,52 @@ footer p{font-size:0.85rem;}
 
 <!-- ═══ NAV ═══ -->
 <nav>
-  <div class="logo">Esta<span>to</span></div>
+  <div class="logo">Kerala Theeram<span> കേരളതീരം</span></div>
   <ul class="nav-links">
     <li><a onclick="showPage('home')">Home</a></li>
     <li><a onclick="showPage('home');setTimeout(()=>document.getElementById('listings').scrollIntoView({behavior:'smooth'}),100)">Listings</a></li>
     <li><a onclick="showPage('add')">List Property</a></li>
-    <li><a onclick="showPage('admin')" id="admin-link" style="display:none">Admin</a></li>
+    <li><a onclick="showPage('admin')" id="admin-link" style="display:none">⚙️ Admin</a></li>
   </ul>
   <div class="nav-right">
     <span id="nav-user"></span>
     <button class="nav-btn btn-dark" id="login-btn" onclick="showAuth()">Sign In</button>
     <button class="nav-btn btn-outline" id="logout-btn" style="display:none" onclick="doLogout()">Sign Out</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('home');closeMenu()">🏠 Home</a>
+  <a onclick="showPage('home');setTimeout(()=>document.getElementById('listings').scrollIntoView({behavior:'smooth'}),100);closeMenu()">🏘️ Listings</a>
+  <a onclick="showPage('add');closeMenu()">➕ List Property</a>
+  <a id="admin-mobile-link" style="display:none" onclick="showPage('admin');closeMenu()">⚙️ Admin Dashboard</a>
+  <a id="mobile-signin" onclick="showAuth();closeMenu()">🔐 Sign In</a>
+  <a id="mobile-signout" style="display:none" onclick="doLogout();closeMenu()">🚪 Sign Out</a>
+</div>
 
 <!-- ═══ HOME PAGE ═══ -->
 <div class="page active" id="page-home">
   <section class="hero">
-    <div class="hero-label">Premium Real Estate</div>
-    <h1>Find Your <em>Dream</em><br>Home Today</h1>
-    <p>Discover exceptional properties curated for discerning buyers. From luxury villas to urban apartments — your perfect home awaits.</p>
-    <div class="hero-btns">
-      <button class="nav-btn btn-dark" style="padding:14px 32px;font-size:0.95rem" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">Browse Listings</button>
-      <button class="nav-btn btn-outline" style="padding:14px 32px;font-size:0.95rem" onclick="showPage('add')">List a Property</button>
+    <!-- Kerala aerial background image -->
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1800&q=85" alt="Kerala aerial view with coconut trees and highways" onerror="this.src='https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1800&q=85'">
     </div>
-    <div class="hero-stats">
-      <div><div class="stat-num" id="stat-total">—</div><div class="stat-label">Properties Listed</div></div>
-      <div><div class="stat-num">98%</div><div class="stat-label">Client Satisfaction</div></div>
-      <div><div class="stat-num">12+</div><div class="stat-label">Years Experience</div></div>
+    <div class="hero-content">
+      <div class="hero-label">കേരളതീരം · God's Own Country · Premium Real Estate</div>
+      <h1>Find Your <em>Dream</em><br>Home in Kerala</h1>
+      <p>Kerala Theeram — your trusted partner for premium properties across Kerala. From backwater villas in Alleppey to hilltop estates in Munnar, your paradise home awaits.</p>
+      <div class="hero-btns">
+        <button class="nav-btn btn-gold" style="padding:14px 32px;font-size:0.95rem" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">Browse Listings</button>
+        <button class="nav-btn" style="padding:14px 32px;font-size:0.95rem;background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.5);border-radius:50px" onclick="showPage('add')">List a Property</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num" id="stat-total">—</div><div class="stat-label">Properties Listed</div></div>
+        <div><div class="stat-num">98%</div><div class="stat-label">Client Satisfaction</div></div>
+        <div><div class="stat-num">12+</div><div class="stat-label">Years Experience</div></div>
+      </div>
     </div>
   </section>
 
@@ -288,9 +398,9 @@ footer p{font-size:0.85rem;}
 </div>
 
 <footer>
-  <div class="flogo">Esta<span>to</span></div>
-  <p>Premium properties, exceptional service &nbsp;·&nbsp; contact@estato.in</p>
-  <p style="margin-top:8px;opacity:0.4;font-size:0.76rem">© 2026 Estato Real Estate. Powered by Firebase.</p>
+  <div class="flogo">Kerala Theeram<span> കേരളതീരം</span></div>
+  <p>Premium properties across God's Own Country &nbsp;·&nbsp; contact@keralatheraam.in</p>
+  <p style="margin-top:8px;opacity:0.4;font-size:0.76rem">© 2026 Kerala Theeram. Powered by Firebase.</p>
 </footer>
 
 <!-- ═══ PROPERTY DETAIL MODAL ═══ -->
@@ -320,7 +430,7 @@ footer p{font-size:0.85rem;}
 <!-- ═══ AUTH MODAL ═══ -->
 <div class="overlay" id="auth-overlay" onclick="closeAuthModal(event)">
   <div class="auth-modal">
-    <h2>Welcome to Estato</h2>
+    <h2>Welcome to Kerala Theeram</h2>
     <p>Sign in to list properties and save favorites</p>
     <div class="auth-tabs">
       <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Sign In</button>
@@ -372,8 +482,8 @@ const firebaseConfig = {
 };
 // ─────────────────────────────────────────────────────────────────────────────
 
-// ── ADMIN EMAIL (change to your email) ───────────────────────────────────────
-const ADMIN_EMAIL = "gstcell@gmail.com"; // ← Change this to your email
+// ── ADMIN EMAIL ───────────────────────────────────────────────────────────────
+const ADMIN_EMAIL = "gstcell.com@gmail.com";
 // ─────────────────────────────────────────────────────────────────────────────
 
 const app  = initializeApp(firebaseConfig);
@@ -388,12 +498,12 @@ let uploadedImageURLs = [];
 
 // ── SEED DATA ─────────────────────────────────────────────────────────────────
 const seedData = [
-  { title:"Luxury Sea-View Villa", price:45000000, location:"Panaji, Goa", type:"Villa", status:"For Sale", beds:5, baths:4, area:4800, image:"https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80", description:"Breathtaking sea-view villa with private pool and landscaped garden.", phone:"+91 98765 43210", lat:"15.4909", lng:"73.8278" },
-  { title:"Modern City Apartment", price:12500, location:"Bandra West, Mumbai", type:"Apartment", status:"For Rent", beds:3, baths:2, area:1650, image:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80", description:"Fully furnished 3BHK in the heart of Bandra with gym and rooftop terrace.", phone:"+91 91234 56789", lat:"19.0596", lng:"72.8295" },
-  { title:"Heritage Haveli Estate", price:32000000, location:"Civil Lines, Jaipur", type:"House", status:"For Sale", beds:7, baths:5, area:7200, image:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", description:"Stunning restored haveli with courtyard and frescoes. Perfect for boutique hotel.", phone:"+91 94567 89012", lat:"26.9124", lng:"75.7873" },
-  { title:"Penthouse Sky Suite", price:95000000, location:"Worli, Mumbai", type:"Penthouse", status:"For Sale", beds:4, baths:4, area:5200, image:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80", description:"Uber-luxury penthouse with private terrace, infinity pool, panoramic city views.", phone:"+91 99887 76655", lat:"18.9988", lng:"72.8151" },
-  { title:"Hilltop Cottage", price:8500, location:"Ooty, Tamil Nadu", type:"House", status:"For Rent", beds:2, baths:1, area:980, image:"https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=80", description:"Charming hill-station cottage with fireplace and misty mountain views.", phone:"+91 90011 22334", lat:"11.4102", lng:"76.6950" },
-  { title:"Tech Hub Studio", price:28000, location:"Whitefield, Bangalore", type:"Apartment", status:"For Rent", beds:1, baths:1, area:620, image:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80", description:"Smart studio near IT parks with modular furniture and high-speed internet.", phone:"+91 80022 33445", lat:"12.9698", lng:"77.7499" }
+  { title:"Backwater Villa with Private Jetty", price:38000000, location:"Alleppey, Kerala", type:"Villa", status:"For Sale", beds:4, baths:3, area:3800, image:"https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&q=80", description:"Stunning backwater villa with private jetty, coconut groves, and panoramic houseboat views. A true Kerala paradise.", phone:"+91 94470 12345", lat:"9.4981", lng:"76.3388" },
+  { title:"Modern Flat in Kochi", price:18000, location:"Marine Drive, Kochi", type:"Apartment", status:"For Rent", beds:3, baths:2, area:1550, image:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80", description:"Fully furnished 3BHK with sea-facing balcony, gym, and covered parking in the heart of Ernakulam.", phone:"+91 98470 23456", lat:"9.9816", lng:"76.2999" },
+  { title:"Hilltop Tea Estate Bungalow", price:55000000, location:"Munnar, Idukki", type:"House", status:"For Sale", beds:5, baths:4, area:5400, image:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", description:"Colonial-era bungalow set among rolling tea gardens at 5,000 ft. Breathtaking misty views.", phone:"+91 94460 34567", lat:"10.0889", lng:"77.0595" },
+  { title:"Beach House in Kovalam", price:72000000, location:"Kovalam, Thiruvananthapuram", type:"Villa", status:"For Sale", beds:4, baths:3, area:4200, image:"https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80", description:"Luxury beachfront villa steps from the famous Kovalam lighthouse beach. Private pool and garden.", phone:"+91 94461 45678", lat:"8.3988", lng:"76.9784" },
+  { title:"Traditional Tharavad House", price:12000, location:"Thrissur, Kerala", type:"House", status:"For Rent", beds:4, baths:2, area:2800, image:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", description:"Beautifully restored traditional Kerala nalukettu with inner courtyard, tulsi thara, and mango trees.", phone:"+91 94462 56789", lat:"10.5276", lng:"76.2144" },
+  { title:"IT Corridor Studio", price:22000, location:"Technopark, Thiruvananthapuram", type:"Apartment", status:"For Rent", beds:1, baths:1, area:680, image:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80", description:"Modern studio apartment walking distance from Technopark. Fully furnished with fast internet.", phone:"+91 94463 67890", lat:"8.5530", lng:"76.8802" }
 ];
 
 async function seedIfEmpty(colRef) {
@@ -405,25 +515,46 @@ async function seedIfEmpty(colRef) {
   }
 }
 
+// ── HAMBURGER MENU ────────────────────────────────────────────────────────────
+window.toggleMenu = () => {
+  const menu = document.getElementById('mobile-menu');
+  const btn  = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+};
+window.closeMenu = () => {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+};
+
 // ── AUTH STATE ────────────────────────────────────────────────────────────────
 onAuthStateChanged(auth, user => {
   currentUser = user;
-  const loginBtn  = document.getElementById('login-btn');
-  const logoutBtn = document.getElementById('logout-btn');
-  const navUser   = document.getElementById('nav-user');
-  const adminLink = document.getElementById('admin-link');
+  const loginBtn   = document.getElementById('login-btn');
+  const logoutBtn  = document.getElementById('logout-btn');
+  const navUser    = document.getElementById('nav-user');
+  const adminLink  = document.getElementById('admin-link');
+  const adminMLink = document.getElementById('admin-mobile-link');
+  const mSignin    = document.getElementById('mobile-signin');
+  const mSignout   = document.getElementById('mobile-signout');
   if(user) {
-    loginBtn.style.display  = 'none';
-    logoutBtn.style.display = 'block';
-    navUser.style.display   = 'block';
-    navUser.textContent     = user.displayName || user.email.split('@')[0];
-    if(user.email === ADMIN_EMAIL) adminLink.style.display = 'block';
-    else adminLink.style.display = 'none';
+    loginBtn.style.display   = 'none';
+    logoutBtn.style.display  = 'block';
+    navUser.style.display    = 'block';
+    navUser.textContent      = user.displayName || user.email.split('@')[0];
+    mSignin.style.display    = 'none';
+    mSignout.style.display   = 'block';
+    const isAdmin = user.email === ADMIN_EMAIL;
+    adminLink.style.display  = isAdmin ? 'block' : 'none';
+    adminMLink.style.display = isAdmin ? 'block' : 'none';
   } else {
-    loginBtn.style.display  = 'block';
-    logoutBtn.style.display = 'none';
-    navUser.style.display   = 'none';
-    adminLink.style.display = 'none';
+    loginBtn.style.display   = 'block';
+    logoutBtn.style.display  = 'none';
+    navUser.style.display    = 'none';
+    adminLink.style.display  = 'none';
+    adminMLink.style.display = 'none';
+    mSignin.style.display    = 'block';
+    mSignout.style.display   = 'none';
   }
   renderAddForm();
   if(document.getElementById('page-admin').classList.contains('active')) renderAdmin();
@@ -699,8 +830,8 @@ window.submitListing = async () => {
 // ── ADMIN DASHBOARD ───────────────────────────────────────────────────────────
 window.renderAdmin = async () => {
   const content = document.getElementById('admin-content');
-  if(!currentUser){ content.innerHTML=`<div class="access-denied"><h2>🔐 Sign In Required</h2><p>Please sign in to access the admin dashboard.</p></div>`; return; }
-  if(currentUser.email !== ADMIN_EMAIL){ content.innerHTML=`<div class="access-denied"><h2>⛔ Access Denied</h2><p>This area is restricted to administrators only.</p></div>`; return; }
+  if(!currentUser){ content.innerHTML=`<div class="access-denied"><h2>🔐 Sign In Required</h2><p>Please sign in to access the admin dashboard.</p><br><button class="nav-btn btn-dark" style="padding:12px 28px" onclick="showAuth()">Sign In</button></div>`; return; }
+  if(currentUser.email !== ADMIN_EMAIL){ content.innerHTML=`<div class="access-denied"><h2>⛔ Access Denied</h2><p>This area is restricted to administrators only.<br>Logged in as: <strong>${currentUser.email}</strong></p></div>`; return; }
   content.innerHTML=`<div class="loading"><div class="spinner"></div><p>Loading dashboard…</p></div>`;
   try {
     const snap = await getDocs(query(collection(db,"properties"), orderBy("createdAt","desc")));
@@ -708,50 +839,156 @@ window.renderAdmin = async () => {
     const forSale  = props.filter(p=>p.status==='For Sale').length;
     const forRent  = props.filter(p=>p.status==='For Rent').length;
     const totalVal = props.filter(p=>p.status==='For Sale').reduce((s,p)=>s+(p.price||0),0);
+    const rentVal  = props.filter(p=>p.status==='For Rent').reduce((s,p)=>s+(p.price||0),0);
+
     content.innerHTML = `
-      <h2>Admin Dashboard</h2>
-      <div class="admin-stats">
-        <div class="astat"><div class="astat-n">${props.length}</div><div class="astat-l">Total Listings</div></div>
-        <div class="astat"><div class="astat-n">${forSale}</div><div class="astat-l">For Sale</div></div>
-        <div class="astat"><div class="astat-n">${forRent}</div><div class="astat-l">For Rent</div></div>
-        <div class="astat"><div class="astat-n">₹${(totalVal/10000000).toFixed(1)}Cr</div><div class="astat-l">Total Portfolio Value</div></div>
+      <div class="admin-toolbar">
+        <h2>⚙️ Admin Dashboard</h2>
+        <div class="admin-toolbar-btns">
+          <input class="search-admin" type="text" id="admin-search" placeholder="🔍 Search properties…" oninput="adminSearchFilter()">
+          <button class="atbtn atbtn-gold" onclick="exportCSV()">📥 Export CSV</button>
+          <button class="atbtn atbtn-red" onclick="deleteAllConfirm()">🗑 Delete All</button>
+        </div>
       </div>
+
+      <div class="admin-card-grid">
+        <div class="acard"><div class="acard-n">${props.length}</div><div class="acard-l">Total Listings</div></div>
+        <div class="acard"><div class="acard-n">${forSale}</div><div class="acard-l">For Sale</div></div>
+        <div class="acard"><div class="acard-n">${forRent}</div><div class="acard-l">For Rent</div></div>
+        <div class="acard"><div class="acard-n">₹${(totalVal/10000000).toFixed(1)}Cr</div><div class="acard-l">Sale Portfolio</div></div>
+        <div class="acard"><div class="acard-n">₹${Number(rentVal).toLocaleString('en-IN')}</div><div class="acard-l">Monthly Rent Value</div></div>
+        <div class="acard"><div class="acard-n">${currentUser.displayName||'Admin'}</div><div class="acard-l">Logged in as</div></div>
+      </div>
+
+      <!-- Desktop Table -->
       <div class="admin-table-wrap">
-        <h3>All Properties</h3>
-        <table>
+        <h3>All Properties <span style="font-size:0.85rem;font-weight:400;color:var(--warm-gray)" id="admin-count">(${props.length} total)</span></h3>
+        <table id="admin-table">
           <thead><tr>
-            <th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Type</th><th>Status</th><th>Actions</th>
+            <th>#</th><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Type</th><th>Status</th><th>Actions</th>
           </tr></thead>
-          <tbody>
-            ${props.map(p=>`<tr>
-              <td><img class="td-img" src="${p.image||'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&q=60'}" alt="" onerror="this.src='https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&q=60'"></td>
-              <td><strong>${p.title}</strong></td>
+          <tbody id="admin-tbody">
+            ${props.map((p,i)=>`<tr data-id="${p.id}" data-title="${p.title.toLowerCase()}" data-loc="${p.location.toLowerCase()}">
+              <td style="color:var(--warm-gray);font-size:0.8rem">${i+1}</td>
+              <td><img class="td-img" src="${p.image||'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=200&q=60'}" alt="" onerror="this.src='https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=200&q=60'"></td>
+              <td><strong>${p.title}</strong><br><span style="font-size:0.78rem;color:var(--warm-gray)">${p.addedByEmail||'—'}</span></td>
               <td>${p.location}</td>
-              <td>₹${Number(p.price).toLocaleString('en-IN')}</td>
+              <td><strong>₹${Number(p.price).toLocaleString('en-IN')}</strong>${p.status==='For Rent'?'<br><span style="font-size:0.75rem;color:var(--warm-gray)">/month</span>':''}</td>
               <td>${p.type}</td>
               <td><span class="status-badge ${p.status==='For Sale'?'sale':'rent'}">${p.status}</span></td>
-              <td>
-                <button class="edit-btn" onclick="openPropModal('${p.id}');showPage('home')">👁 View</button>
-                <button class="del-btn" onclick="adminDelete('${p.id}',this)">🗑 Delete</button>
+              <td style="white-space:nowrap">
+                <button class="edit-btn" onclick="adminToggleStatus('${p.id}','${p.status}',this)">🔄 Toggle</button>
+                <button class="edit-btn" onclick="adminView('${p.id}')">👁 View</button>
+                <button class="del-btn" onclick="adminDelete('${p.id}',this)">🗑</button>
               </td>
             </tr>`).join('')}
           </tbody>
         </table>
+      </div>
+
+      <!-- Mobile Cards -->
+      <div id="admin-mobile-cards">
+        ${props.map((p,i)=>`
+        <div class="prop-mobile-card" data-id="${p.id}" data-title="${p.title.toLowerCase()}" data-loc="${p.location.toLowerCase()}">
+          <img src="${p.image||'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=70'}" alt="${p.title}" onerror="this.src='https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=70'">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <span class="status-badge ${p.status==='For Sale'?'sale':'rent'}">${p.status}</span>
+            <span style="font-size:0.78rem;color:var(--warm-gray)">#${i+1}</span>
+          </div>
+          <h4>${p.title}</h4>
+          <p>📍 ${p.location} · ${p.type}<br>💰 ₹${Number(p.price).toLocaleString('en-IN')}${p.status==='For Rent'?'/mo':''}</p>
+          <div class="card-actions">
+            <button class="edit-btn" style="flex:1" onclick="adminToggleStatus('${p.id}','${p.status}',this)">🔄 Toggle Status</button>
+            <button class="edit-btn" onclick="adminView('${p.id}')">👁</button>
+            <button class="del-btn" onclick="adminDelete('${p.id}',this)">🗑</button>
+          </div>
+        </div>`).join('')}
       </div>`;
+
+    // store props for export
+    window._adminProps = props;
   } catch(e) {
     content.innerHTML=`<div class="access-denied"><h2>⚠️ Error</h2><p>${e.message}</p></div>`;
   }
 };
 
+// Admin: search filter
+window.adminSearchFilter = () => {
+  const q = document.getElementById('admin-search').value.toLowerCase();
+  // desktop rows
+  document.querySelectorAll('#admin-tbody tr').forEach(row=>{
+    const match = row.dataset.title.includes(q)||row.dataset.loc.includes(q);
+    row.style.display = match?'':'none';
+  });
+  // mobile cards
+  document.querySelectorAll('#admin-mobile-cards .prop-mobile-card').forEach(card=>{
+    const match = card.dataset.title.includes(q)||card.dataset.loc.includes(q);
+    card.style.display = match?'block':'none';
+  });
+};
+
+// Admin: toggle sale/rent status
+window.adminToggleStatus = async (id, currentStatus, btn) => {
+  const newStatus = currentStatus==='For Sale'?'For Rent':'For Sale';
+  if(!confirm(`Change status to "${newStatus}"?`)) return;
+  btn.textContent='…'; btn.disabled=true;
+  try {
+    await updateDoc(doc(db,"properties",id), { status: newStatus });
+    const p = allProperties.find(x=>x.id===id);
+    if(p) p.status = newStatus;
+    renderProps(allProperties);
+    renderAdmin();
+  } catch(e) { alert('Error: '+e.message); btn.textContent='🔄 Toggle'; btn.disabled=false; }
+};
+
+// Admin: view property
+window.adminView = id => {
+  // load all if needed
+  if(!allProperties.find(x=>x.id===id)) loadProperties().then(()=>{ openPropModal(id); showPage('home'); });
+  else { openPropModal(id); showPage('home'); }
+};
+
+// Admin: delete
 window.adminDelete = async (id, btn) => {
   if(!confirm('Delete this property? This cannot be undone.')) return;
-  btn.textContent='Deleting…'; btn.disabled=true;
+  btn.textContent='…'; btn.disabled=true;
   try {
     await deleteDoc(doc(db,"properties",id));
     allProperties = allProperties.filter(p=>p.id!==id);
-    renderAdmin();
     renderProps(allProperties);
-  } catch(e) { alert('Error: '+e.message); btn.textContent='🗑 Delete'; btn.disabled=false; }
+    renderAdmin();
+  } catch(e) { alert('Error: '+e.message); btn.textContent='🗑'; btn.disabled=false; }
+};
+
+// Admin: delete ALL
+window.deleteAllConfirm = async () => {
+  const confirm1 = confirm('⚠️ Delete ALL properties? This cannot be undone!');
+  if(!confirm1) return;
+  const confirm2 = prompt('Type DELETE to confirm:');
+  if(confirm2 !== 'DELETE') return;
+  try {
+    const snap = await getDocs(collection(db,"properties"));
+    for(const d of snap.docs) await deleteDoc(doc(db,"properties",d.id));
+    allProperties = [];
+    renderProps([]);
+    renderAdmin();
+  } catch(e) { alert('Error: '+e.message); }
+};
+
+// Admin: export CSV
+window.exportCSV = () => {
+  const props = window._adminProps || allProperties;
+  if(!props.length) return alert('No properties to export.');
+  const headers = ['Title','Location','Type','Status','Price','Beds','Baths','Area','Phone','Description'];
+  const rows = props.map(p=>[
+    `"${p.title}"`,`"${p.location}"`,p.type,p.status,p.price,p.beds,p.baths,p.area,`"${p.phone||''}"`,`"${(p.description||'').replace(/"/g,"'")}"`
+  ]);
+  const csv = [headers, ...rows].map(r=>r.join(',')).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'kerala_theeram_properties.csv';
+  a.click();
 };
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
