@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
+/* Early page-lock style so it shows before full CSS parses */
+#page-lock-early{position:fixed;inset:0;z-index:99999;background:rgba(15,35,24,0.55);backdrop-filter:blur(5px);}
+</style>
+<style>
 :root {
   --cream:#EEF4EC; --dark:#0F2318; --gold:#C9A84C; --gold-light:#E8C97A;
   --warm-gray:#4A6855; --white:#F5FAF3; --shadow:0 8px 40px rgba(15,35,24,0.12);
@@ -364,6 +368,102 @@ footer .flogo span{font-family:'Noto Sans Malayalam',sans-serif;font-size:1.2rem
 @keyframes spin{to{transform:rotate(360deg)}}
 .empty{text-align:center;padding:60px;}
 .empty p{color:var(--warm-gray);margin-top:8px;}
+
+/* ── PAGE LOADING LOCK OVERLAY ── */
+#page-lock{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(15,35,24,0.45);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:22px;
+  transition:opacity .5s ease;
+  pointer-events:all;
+  user-select:none;
+}
+#page-lock.hiding{opacity:0;pointer-events:none;}
+#page-lock.hidden{display:none;}
+.pl-spinner-wrap{position:relative;width:76px;height:76px;}
+.pl-ring{
+  width:76px;height:76px;border-radius:50%;
+  border:4px solid rgba(201,168,76,0.2);
+  border-top-color:var(--gold);
+  border-right-color:rgba(201,168,76,0.55);
+  animation:fl-spin .9s cubic-bezier(0.6,0.2,0.4,0.8) infinite;
+  position:absolute;inset:0;
+}
+.pl-ring-inner{
+  width:52px;height:52px;border-radius:50%;
+  border:3px solid rgba(201,168,76,0.1);
+  border-bottom-color:rgba(201,168,76,0.4);
+  animation:fl-spin-rev .7s linear infinite;
+  position:absolute;top:12px;left:12px;
+}
+.pl-icon{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;animation:fl-pulse 2s ease-in-out infinite;
+}
+.pl-text{text-align:center;}
+.pl-label{
+  font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;
+  color:#fff;letter-spacing:0.3px;margin-bottom:6px;
+}
+.pl-sub{font-size:0.78rem;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;}
+.pl-dots{display:flex;gap:7px;justify-content:center;margin-top:10px;}
+.pl-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);opacity:0.3;
+  animation:fl-dot-bounce .9s ease-in-out infinite;
+}
+.pl-dot:nth-child(1){animation-delay:0s;}
+.pl-dot:nth-child(2){animation-delay:.2s;}
+.pl-dot:nth-child(3){animation-delay:.4s;}
+
+
+.featured-loader{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:80px 20px;gap:28px;grid-column:1/-1;
+}
+.fl-ring-wrap{position:relative;width:88px;height:88px;}
+.fl-ring{
+  width:88px;height:88px;border-radius:50%;
+  border:4px solid rgba(201,168,76,0.15);
+  border-top-color:var(--gold);
+  border-right-color:rgba(201,168,76,0.6);
+  animation:fl-spin 1s cubic-bezier(0.6,0.2,0.4,0.8) infinite;
+  position:absolute;inset:0;
+}
+.fl-ring-inner{
+  width:62px;height:62px;border-radius:50%;
+  border:3px solid rgba(201,168,76,0.08);
+  border-bottom-color:rgba(201,168,76,0.45);
+  border-left-color:rgba(201,168,76,0.25);
+  animation:fl-spin-rev .75s linear infinite;
+  position:absolute;top:13px;left:13px;
+}
+.fl-icon{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:1.45rem;animation:fl-pulse 2s ease-in-out infinite;
+}
+@keyframes fl-spin{to{transform:rotate(360deg)}}
+@keyframes fl-spin-rev{to{transform:rotate(-360deg)}}
+@keyframes fl-pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+.fl-text{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.fl-label{
+  font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;
+  color:var(--dark);letter-spacing:0.3px;
+}
+.fl-sub{font-size:0.82rem;color:var(--warm-gray);letter-spacing:1.5px;text-transform:uppercase;}
+.fl-dots{display:flex;gap:7px;margin-top:4px;}
+.fl-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);opacity:0.25;
+  animation:fl-dot-bounce .9s ease-in-out infinite;
+}
+.fl-dot:nth-child(1){animation-delay:0s;}
+.fl-dot:nth-child(2){animation-delay:.18s;}
+.fl-dot:nth-child(3){animation-delay:.36s;}
+@keyframes fl-dot-bounce{0%,80%,100%{opacity:.25;transform:scale(1)}40%{opacity:1;transform:scale(1.4)}}
 
 /* ── MODAL ── */
 .overlay{display:none;position:fixed;inset:0;background:rgba(15,28,15,0.82);z-index:300;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
@@ -797,6 +897,24 @@ footer p{font-size:0.85rem;}
 </head>
 <body>
 
+<!-- ═══ PAGE LOADING LOCK ═══ -->
+<div id="page-lock" role="status" aria-live="polite" aria-label="Loading Kerala Theeram">
+  <div class="pl-spinner-wrap">
+    <div class="pl-ring"></div>
+    <div class="pl-ring-inner"></div>
+    <div class="pl-icon">🏡</div>
+  </div>
+  <div class="pl-text">
+    <div class="pl-label">Kerala Theeram</div>
+    <div class="pl-sub">Loading properties…</div>
+    <div class="pl-dots">
+      <div class="pl-dot"></div>
+      <div class="pl-dot"></div>
+      <div class="pl-dot"></div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ NAV ═══ -->
 <nav>
   <div class="logo">Kerala Theeram<span> കേരളതീരം</span></div>
@@ -858,7 +976,7 @@ footer p{font-size:0.85rem;}
     </div>
     <div class="hero-content">
       <div class="hero-label">കേരളതീരം · God's Own Country · Premium Real Estate</div>
-      <h1>Find Your <em>Dream</em></h1>
+      <h1>Find Your <em>Dream</em> Home</h1>
       <p>Kerala Theeram — your trusted partner for premium properties across Kerala. From backwater villas in Alleppey to hilltop estates in Munnar, your paradise home awaits.</p>
 
       <!-- Enhanced Search Box -->
@@ -978,10 +1096,25 @@ footer p{font-size:0.85rem;}
 
   <section class="section" id="listings">
     <div class="sec-header">
-      <div class="sec-title">Featured Listings</div>
+      <div><div class="sec-title">Featured Listings</div></div>
     </div>
     <div class="pgrid" id="pgrid">
-      <div class="loading"><div class="spinner"></div><p>Loading properties…</p></div>
+      <div class="featured-loader" id="featured-loader">
+        <div class="fl-ring-wrap">
+          <div class="fl-ring"></div>
+          <div class="fl-ring-inner"></div>
+          <div class="fl-icon">🏡</div>
+        </div>
+        <div class="fl-text">
+          <span class="fl-label">Finding Properties</span>
+          <span class="fl-sub">Loading…</span>
+          <div class="fl-dots">
+            <div class="fl-dot"></div>
+            <div class="fl-dot"></div>
+            <div class="fl-dot"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </div>
@@ -1943,7 +2076,23 @@ window.confirmUpgrade = async () => {
   } finally { btn.textContent='✅ Confirm & Add Days'; btn.disabled=false; }
 };
 
+// ── PAGE LOADING LOCK ─────────────────────────────────────────────────────────
+function showPageLock() {
+  const el = document.getElementById('page-lock');
+  if(!el) return;
+  el.classList.remove('hidden','hiding');
+  document.body.style.overflow = 'hidden';
+}
+function hidePageLock() {
+  const el = document.getElementById('page-lock');
+  if(!el) return;
+  el.classList.add('hiding');
+  document.body.style.overflow = '';
+  setTimeout(() => el.classList.add('hidden'), 520);
+}
+
 async function loadProperties() {
+  showPageLock();
   const colRef = collection(db, "properties");
   try {
     await seedIfEmpty(colRef);
@@ -1960,6 +2109,7 @@ async function loadProperties() {
       });
     renderProps(allProperties);
     buildSearchDropdowns(allProperties);
+    hidePageLock();
     // Request user location after listings load
     requestUserLocation();
     // Deep-link: auto-open property if ?property=ID in URL
@@ -1970,6 +2120,7 @@ async function loadProperties() {
     }
   } catch(e) {
     console.error(e);
+    hidePageLock();
     const msg = e.code==='permission-denied'
       ? '<h3>⚠️ Permission Denied</h3><p>Update your Firestore Rules to: <b>allow read, write: if true;</b></p>'
       : '<h3>⚠️ Error</h3><p>'+e.message+'</p>';
